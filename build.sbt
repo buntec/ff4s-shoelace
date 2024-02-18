@@ -34,7 +34,7 @@ lazy val scalaJsSnabbdomVersion = "0.2.0-M3"
 lazy val fs2DomVersion = "0.2.1"
 
 lazy val root =
-  tlCrossRootProject.aggregate(`ff4s-shoelace`, examples, docs)
+  tlCrossRootProject.aggregate(`ff4s-shoelace`, examples)
 
 lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
   .enablePlugins(ScalaJSPlugin)
@@ -55,7 +55,7 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
       "io.circe" %%% "circe-literal" % circeVersion,
       "io.circe" %%% "circe-parser" % circeVersion,
       "com.armanbilge" %%% "fs2-dom" % fs2DomVersion
-    ),
+    )
   )
 
 lazy val examples = (project in file("examples"))
@@ -67,15 +67,4 @@ lazy val examples = (project in file("examples"))
       "dev.optics" %%% "monocle-macro" % "3.2.0"
     )
   )
-  .dependsOn(ff4s)
-
-lazy val docs = project
-  .in(file("site"))
-  .enablePlugins(TypelevelSitePlugin)
-  .settings(
-    tlSiteApiPackage := Some("ff4s"),
-    tlSiteIsTypelevelProject := None,
-    mdocJS := Some(`ff4s-shoelace`),
-    laikaConfig ~= { _.withRawContent },
-    tlSiteHelium ~= { HeliumConfig.customize(_) }
-  )
+  .dependsOn(`ff4s-shoelace`)
