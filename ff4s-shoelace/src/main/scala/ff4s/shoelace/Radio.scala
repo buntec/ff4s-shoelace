@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,10 +24,10 @@ object Radio extends WebComponent {
   // -- Events --
 
   /** Emitted when the control loses focus. */
-  lazy val onBlur: EventProp[dom.Event] = EventProp[dom.Event]("sl-blur")
+  lazy val onBlur: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-blur")
 
   /** Emitted when the control gains focus. */
-  lazy val onFocus: EventProp[dom.Event] = EventProp[dom.Event]("sl-focus")
+  lazy val onFocus: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-focus")
 
 
   // -- Attributes --

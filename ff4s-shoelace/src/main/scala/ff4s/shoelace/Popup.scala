@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,7 +24,7 @@ object Popup extends WebComponent {
   // -- Events --
 
   /** Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive operations in your listener or consider debouncing it. */
-  lazy val onReposition: EventProp[dom.Event] = EventProp[dom.Event]("sl-reposition")
+  lazy val onReposition: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-reposition")
 
 
   // -- Attributes --

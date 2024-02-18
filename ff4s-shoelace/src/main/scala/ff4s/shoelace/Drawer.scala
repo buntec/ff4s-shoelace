@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import ff4s.shoelace.EventTypes.*
 import org.scalajs.dom
 
@@ -26,19 +25,19 @@ object Drawer extends WebComponent {
   // -- Events --
 
   /** Emitted when the drawer opens. */
-  lazy val onShow: EventProp[dom.Event] = EventProp[dom.Event]("sl-show")
+  lazy val onShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-show")
 
   /** Emitted after the drawer opens and all animations are complete. */
-  lazy val onAfterShow: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-show")
+  lazy val onAfterShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-show")
 
   /** Emitted when the drawer closes. */
-  lazy val onHide: EventProp[dom.Event] = EventProp[dom.Event]("sl-hide")
+  lazy val onHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-hide")
 
   /** Emitted after the drawer closes and all animations are complete. */
-  lazy val onAfterHide: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-hide")
+  lazy val onAfterHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-hide")
 
   /** Emitted when the drawer opens and is ready to receive focus. Calling `event.preventDefault()` will prevent focusing and allow you to set it on a different element, such as an input. */
-  lazy val onInitialFocus: EventProp[dom.Event] = EventProp[dom.Event]("sl-initial-focus")
+  lazy val onInitialFocus: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-initial-focus")
 
   /** Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss. */
   lazy val onRequestClose: EventProp[RequestCloseEvent] = EventProp[RequestCloseEvent]("sl-request-close")

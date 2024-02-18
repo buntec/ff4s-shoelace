@@ -290,7 +290,6 @@ class ShoelaceGenerator(
     ).filter(_.nonEmpty)
 
     line(s"import ff4s._")
-    line(s"import ff4s.codecs._")
 
     // line("import com.raquo.utils.JSImportSideEffect")
     if (customEventTypes.nonEmpty) {

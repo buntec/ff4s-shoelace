@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,13 +24,13 @@ object Animation extends WebComponent {
   // -- Events --
 
   /** Emitted when the animation is canceled. */
-  lazy val onCancel: EventProp[dom.Event] = EventProp[dom.Event]("sl-cancel")
+  lazy val onCancel: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-cancel")
 
   /** Emitted when the animation finishes. */
-  lazy val onFinish: EventProp[dom.Event] = EventProp[dom.Event]("sl-finish")
+  lazy val onFinish: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-finish")
 
   /** Emitted when the animation starts or restarts. */
-  lazy val onStart: EventProp[dom.Event] = EventProp[dom.Event]("sl-start")
+  lazy val onStart: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-start")
 
 
   // -- Attributes --

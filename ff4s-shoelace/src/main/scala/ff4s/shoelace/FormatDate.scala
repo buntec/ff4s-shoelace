@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js

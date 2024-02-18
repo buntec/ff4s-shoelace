@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,7 +24,7 @@ object SplitPanel extends WebComponent {
   // -- Events --
 
   /** Emitted when the divider's position changes. */
-  lazy val onReposition: EventProp[dom.Event] = EventProp[dom.Event]("sl-reposition")
+  lazy val onReposition: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-reposition")
 
 
   // -- Attributes --

@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,16 +24,16 @@ object Dropdown extends WebComponent {
   // -- Events --
 
   /** Emitted when the dropdown opens. */
-  lazy val onShow: EventProp[dom.Event] = EventProp[dom.Event]("sl-show")
+  lazy val onShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-show")
 
   /** Emitted after the dropdown opens and all animations are complete. */
-  lazy val onAfterShow: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-show")
+  lazy val onAfterShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-show")
 
   /** Emitted when the dropdown closes. */
-  lazy val onHide: EventProp[dom.Event] = EventProp[dom.Event]("sl-hide")
+  lazy val onHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-hide")
 
   /** Emitted after the dropdown closes and all animations are complete. */
-  lazy val onAfterHide: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-hide")
+  lazy val onAfterHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-hide")
 
 
   // -- Attributes --

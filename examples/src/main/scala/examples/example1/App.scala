@@ -56,15 +56,11 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
         sl.Range.max := 100,
         sl.Range.value := state.progress,
         sl.Range.onChange := { ev =>
-          println(
-            s"change: ${ev.target}"
-          );
+          println(s"change: ${ev.target.value}");
           None
         },
         sl.Range.onInput := { ev =>
-          println(
-            s"input: ${ev} ${js.JSON.stringify(ev.asInstanceOf[js.Any])}"
-          );
+          println(s"input: ${ev.target.value}");
           None
         }
       )

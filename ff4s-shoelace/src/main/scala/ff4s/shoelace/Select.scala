@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,34 +24,34 @@ object Select extends WebComponent {
   // -- Events --
 
   /** Emitted when the control's value changes. */
-  lazy val onChange: EventProp[dom.Event] = EventProp[dom.Event]("sl-change")
+  lazy val onChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-change")
 
   /** Emitted when the control's value is cleared. */
-  lazy val onClear: EventProp[dom.Event] = EventProp[dom.Event]("sl-clear")
+  lazy val onClear: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-clear")
 
   /** Emitted when the control receives input. */
-  lazy val onInput: EventProp[dom.Event] = EventProp[dom.Event]("sl-input")
+  lazy val onInput: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-input")
 
   /** Emitted when the control gains focus. */
-  lazy val onFocus: EventProp[dom.Event] = EventProp[dom.Event]("sl-focus")
+  lazy val onFocus: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-focus")
 
   /** Emitted when the control loses focus. */
-  lazy val onBlur: EventProp[dom.Event] = EventProp[dom.Event]("sl-blur")
+  lazy val onBlur: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-blur")
 
   /** Emitted when the select's menu opens. */
-  lazy val onShow: EventProp[dom.Event] = EventProp[dom.Event]("sl-show")
+  lazy val onShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-show")
 
   /** Emitted after the select's menu opens and all animations are complete. */
-  lazy val onAfterShow: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-show")
+  lazy val onAfterShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-show")
 
   /** Emitted when the select's menu closes. */
-  lazy val onHide: EventProp[dom.Event] = EventProp[dom.Event]("sl-hide")
+  lazy val onHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-hide")
 
   /** Emitted after the select's menu closes and all animations are complete. */
-  lazy val onAfterHide: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-hide")
+  lazy val onAfterHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-hide")
 
   /** Emitted when the form control has been checked for validity and its constraints aren't satisfied. */
-  lazy val onInvalid: EventProp[dom.Event] = EventProp[dom.Event]("sl-invalid")
+  lazy val onInvalid: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-invalid")
 
 
   // -- Attributes --

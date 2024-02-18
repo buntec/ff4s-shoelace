@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,19 +24,19 @@ object Textarea extends WebComponent {
   // -- Events --
 
   /** Emitted when the control loses focus. */
-  lazy val onBlur: EventProp[dom.Event] = EventProp[dom.Event]("sl-blur")
+  lazy val onBlur: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-blur")
 
   /** Emitted when an alteration to the control's value is committed by the user. */
-  lazy val onChange: EventProp[dom.Event] = EventProp[dom.Event]("sl-change")
+  lazy val onChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-change")
 
   /** Emitted when the control gains focus. */
-  lazy val onFocus: EventProp[dom.Event] = EventProp[dom.Event]("sl-focus")
+  lazy val onFocus: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-focus")
 
   /** Emitted when the control receives input. */
-  lazy val onInput: EventProp[dom.Event] = EventProp[dom.Event]("sl-input")
+  lazy val onInput: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-input")
 
   /** Emitted when the form control has been checked for validity and its constraints aren't satisfied. */
-  lazy val onInvalid: EventProp[dom.Event] = EventProp[dom.Event]("sl-invalid")
+  lazy val onInvalid: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-invalid")
 
 
   // -- Attributes --

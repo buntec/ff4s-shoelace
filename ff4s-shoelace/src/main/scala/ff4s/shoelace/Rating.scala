@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import ff4s.shoelace.EventTypes.*
 import org.scalajs.dom
 
@@ -26,7 +25,7 @@ object Rating extends WebComponent {
   // -- Events --
 
   /** Emitted when the rating's value changes. */
-  lazy val onChange: EventProp[dom.Event] = EventProp[dom.Event]("sl-change")
+  lazy val onChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-change")
 
   /** Emitted when the user hovers over a value. The `phase` property indicates when hovering starts, moves to a new value, or ends. The `value` property tells what the rating's value would be if the user were to commit to the hovered value. */
   lazy val onHover: EventProp[HoverEvent] = EventProp[HoverEvent]("sl-hover")

@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,22 +24,22 @@ object TreeItem extends WebComponent {
   // -- Events --
 
   /** Emitted when the tree item expands. */
-  lazy val onExpand: EventProp[dom.Event] = EventProp[dom.Event]("sl-expand")
+  lazy val onExpand: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-expand")
 
   /** Emitted after the tree item expands and all animations are complete. */
-  lazy val onAfterExpand: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-expand")
+  lazy val onAfterExpand: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-expand")
 
   /** Emitted when the tree item collapses. */
-  lazy val onCollapse: EventProp[dom.Event] = EventProp[dom.Event]("sl-collapse")
+  lazy val onCollapse: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-collapse")
 
   /** Emitted after the tree item collapses and all animations are complete. */
-  lazy val onAfterCollapse: EventProp[dom.Event] = EventProp[dom.Event]("sl-after-collapse")
+  lazy val onAfterCollapse: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-after-collapse")
 
   /** Emitted when the tree item's lazy state changes. */
-  lazy val onLazyChange: EventProp[dom.Event] = EventProp[dom.Event]("sl-lazy-change")
+  lazy val onLazyChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-lazy-change")
 
   /** Emitted when a lazy item is selected. Use this event to asynchronously load data and append items to the tree before expanding. After appending new items, remove the `lazy` attribute to remove the loading state and update the tree. */
-  lazy val onLazyLoad: EventProp[dom.Event] = EventProp[dom.Event]("sl-lazy-load")
+  lazy val onLazyLoad: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-lazy-load")
 
 
   // -- Attributes --

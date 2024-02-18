@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,7 +24,7 @@ object Tag extends WebComponent {
   // -- Events --
 
   /** Emitted when the remove button is activated. */
-  lazy val onRemove: EventProp[dom.Event] = EventProp[dom.Event]("sl-remove")
+  lazy val onRemove: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-remove")
 
 
   // -- Attributes --

@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -25,7 +24,7 @@ object Tab extends WebComponent {
   // -- Events --
 
   /** Emitted when the tab is closable and the close button is activated. */
-  lazy val onClose: EventProp[dom.Event] = EventProp[dom.Event]("sl-close")
+  lazy val onClose: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-close")
 
 
   // -- Attributes --

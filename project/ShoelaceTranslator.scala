@@ -83,7 +83,7 @@ class ShoelaceTranslator(
     "validity", "validationMessage"
   )
 
-  val baseEventType: String = "dom.Event"
+  val baseEventType: String = "ff4s.shoelace.EventWithPreciseTarget[Ref]"
 
   /** Fields that are already defined on the element base type in scalajs-dom.
     * Does not have to be exhaustive, can just include what is also defined in

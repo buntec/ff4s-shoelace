@@ -1,7 +1,6 @@
 package ff4s.shoelace
 
 import ff4s._
-import ff4s.codecs._
 import ff4s.shoelace.EventTypes.*
 import org.scalajs.dom
 
@@ -26,7 +25,7 @@ object AnimatedImage extends WebComponent {
   // -- Events --
 
   /** Emitted when the image loads successfully. */
-  lazy val onLoad: EventProp[dom.Event] = EventProp[dom.Event]("sl-load")
+  lazy val onLoad: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-load")
 
   /** Emitted when the image fails to load. */
   lazy val onError: EventProp[ErrorEvent] = EventProp[ErrorEvent]("sl-error")
