@@ -411,7 +411,7 @@ class ShoelaceGenerator(
           val commentLines = slot.description
           if (slot.isDefault) {
             val extraString =
-              "Note: You can just say `_ => element` instead of `_.slots.default(element)`"
+              "Note: You can pass this element like a regular child instead of `default := element`"
             if (commentLines.length == 1) {
               blockCommentLines(List(commentLines.head + " " + extraString))
             } else {

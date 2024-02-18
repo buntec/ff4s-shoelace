@@ -66,7 +66,7 @@ object Carousel extends WebComponent {
 
   object slots {
 
-    /** The carousel's main content, one or more `<sl-carousel-item>` elements. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The carousel's main content, one or more `<sl-carousel-item>` elements. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** Optional next icon to use instead of the default. Works best with `<sl-icon>`. */

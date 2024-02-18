@@ -53,7 +53,7 @@ object TabGroup extends WebComponent {
 
   object slots {
 
-    /** Used for grouping tab panels in the tab group. Must be `<sl-tab-panel>` elements. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** Used for grouping tab panels in the tab group. Must be `<sl-tab-panel>` elements. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** Used for grouping tabs in the tab group. Must be `<sl-tab>` elements. */

@@ -81,7 +81,7 @@ object Tooltip extends WebComponent {
 
   object slots {
 
-    /** The tooltip's target element. Avoid slotting in more than one element, as subsequent ones will be ignored. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The tooltip's target element. Avoid slotting in more than one element, as subsequent ones will be ignored. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The content to render in the tooltip. Alternatively, you can use the `content` attribute. */

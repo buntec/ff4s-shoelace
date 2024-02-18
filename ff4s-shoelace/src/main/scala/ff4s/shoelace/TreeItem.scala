@@ -64,7 +64,7 @@ object TreeItem extends WebComponent {
 
   object slots {
 
-    /** The default slot. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The default slot. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The icon to show when the tree item is expanded. */

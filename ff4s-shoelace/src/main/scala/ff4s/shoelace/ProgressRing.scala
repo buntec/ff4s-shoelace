@@ -43,7 +43,7 @@ object ProgressRing extends WebComponent {
 
   object slots {
 
-    /** A label to show inside the ring. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** A label to show inside the ring. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
   }
 

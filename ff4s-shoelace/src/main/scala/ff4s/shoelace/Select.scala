@@ -128,7 +128,7 @@ object Select extends WebComponent {
 
   object slots {
 
-    /** The listbox options. Must be `<sl-option>` elements. You can use `<sl-divider>` to group items visually. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The listbox options. Must be `<sl-option>` elements. You can use `<sl-divider>` to group items visually. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The input's label. Alternatively, you can use the `label` attribute. */

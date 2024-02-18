@@ -24,9 +24,14 @@
           default = devenv.lib.mkShell {
             inherit inputs pkgs;
             modules = [{
-              packages = with pkgs; [ nodePackages.live-server ];
+              packages = with pkgs; [ nodejs nodePackages.live-server ];
 
               languages = {
+                javascript = {
+                  enable = true;
+                  package = pkgs.nodejs;
+                  # npm.install.enable = true; # this doesn't work for some reason
+                };
                 java.enable = true;
                 java.jdk.package = pkgs.jdk;
                 scala.enable = true;

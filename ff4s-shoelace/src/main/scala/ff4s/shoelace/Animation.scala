@@ -95,7 +95,7 @@ object Animation extends WebComponent {
 
   object slots {
 
-    /** The element to animate. Avoid slotting in more than one element, as subsequent ones will be ignored. To animate multiple elements, either wrap them in a single container or use multiple `<sl-animation>` elements. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The element to animate. Avoid slotting in more than one element, as subsequent ones will be ignored. To animate multiple elements, either wrap them in a single container or use multiple `<sl-animation>` elements. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
   }
 

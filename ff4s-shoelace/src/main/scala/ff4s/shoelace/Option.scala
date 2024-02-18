@@ -51,7 +51,7 @@ object Option extends WebComponent {
 
   object slots {
 
-    /** The option's label. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The option's label. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** Used to prepend an icon or similar element to the menu item. */

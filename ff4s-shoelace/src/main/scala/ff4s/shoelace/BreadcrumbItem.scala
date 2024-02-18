@@ -46,7 +46,7 @@ object BreadcrumbItem extends WebComponent {
 
   object slots {
 
-    /** The breadcrumb item's label. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The breadcrumb item's label. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** An optional prefix, usually an icon or icon button. */

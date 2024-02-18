@@ -71,7 +71,7 @@ object Dialog extends WebComponent {
 
   object slots {
 
-    /** The dialog's main content. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The dialog's main content. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The dialog's label. Alternatively, you can use the `label` attribute. */

@@ -65,7 +65,7 @@ object Alert extends WebComponent {
 
   object slots {
 
-    /** The alert's main content. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The alert's main content. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** An icon to show in the alert. Works best with `<sl-icon>`. */

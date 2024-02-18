@@ -40,7 +40,7 @@ object Breadcrumb extends WebComponent {
 
   object slots {
 
-    /** One or more breadcrumb items to display. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** One or more breadcrumb items to display. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The separator to use between breadcrumb items. Works best with `<sl-icon>`. */

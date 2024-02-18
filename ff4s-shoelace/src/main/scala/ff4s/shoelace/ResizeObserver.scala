@@ -41,7 +41,7 @@ object ResizeObserver extends WebComponent {
 
   object slots {
 
-    /** One or more elements to watch for resizing. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** One or more elements to watch for resizing. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
   }
 

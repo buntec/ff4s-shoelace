@@ -79,7 +79,7 @@ object Dropdown extends WebComponent {
 
   object slots {
 
-    /** The dropdown's main content. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The dropdown's main content. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The dropdown's trigger, usually a `<sl-button>` element. */

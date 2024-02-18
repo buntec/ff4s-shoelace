@@ -74,7 +74,7 @@ object RadioGroup extends WebComponent {
 
   object slots {
 
-    /** The default slot where `<sl-radio>` or `<sl-radio-button>` elements are placed. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The default slot where `<sl-radio>` or `<sl-radio-button>` elements are placed. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The radio group's label. Required for proper accessibility. Alternatively, you can use the `label` attribute. */

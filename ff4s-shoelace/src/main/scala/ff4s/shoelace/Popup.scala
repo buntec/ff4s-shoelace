@@ -119,7 +119,7 @@ object Popup extends WebComponent {
 
   object slots {
 
-    /** The popup's content. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** The popup's content. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
 
     /** The element the popup will be anchored to. If the anchor lives outside of the popup, you can use the `anchor` attribute or property instead. */

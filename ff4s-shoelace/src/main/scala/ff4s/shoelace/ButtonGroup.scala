@@ -40,7 +40,7 @@ object ButtonGroup extends WebComponent {
 
   object slots {
 
-    /** One or more `<sl-button>` elements to display in the button group. Note: You can just say `_ => element` instead of `_.slots.default(element)` */
+    /** One or more `<sl-button>` elements to display in the button group. Note: You can pass this element like a regular child instead of `default := element` */
     lazy val default: Slot = Slot("")
   }
 
