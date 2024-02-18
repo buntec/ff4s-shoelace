@@ -39,7 +39,8 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
 
   import dsl._
   import dsl.html._
-  import dsl.{shoelace => sl}
+
+  import ff4s.shoelace.{components => sl}
 
   val heading = h1(cls := "m-4 text-4xl", "Shoelace examples")
 

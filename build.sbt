@@ -16,9 +16,6 @@ ThisBuild / developers := List(
   tlGitHubDev("buntec", "Christoph Bunte")
 )
 
-// publish website from this branch
-ThisBuild / tlSitePublishBranch := Some("main")
-
 ThisBuild / tlFatalWarnings := false
 
 lazy val scalajsDomVersion = "2.8.0"
@@ -33,6 +30,9 @@ lazy val betterMonadicForVersion = "0.3.1"
 lazy val scalaJsSnabbdomVersion = "0.2.0-M3"
 lazy val fs2DomVersion = "0.2.1"
 
+lazy val ff4sVersion =
+  "0.20.0-6-b83f2a8-20240218T091620Z-SNAPSHOT" // "0.20.0-6-b83f2a8-SNAPSHOT"
+
 lazy val root =
   tlCrossRootProject.aggregate(`ff4s-shoelace`, examples)
 
@@ -41,6 +41,7 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
   .settings(
     name := "ff4s-shoelace",
     libraryDependencies ++= Seq(
+      "io.github.buntec" %%% "ff4s" % ff4sVersion,
       "org.scala-js" %%% "scalajs-dom" % scalajsDomVersion,
       "org.typelevel" %%% "cats-core" % catsVersion,
       "org.typelevel" %%% "cats-free" % catsVersion,
