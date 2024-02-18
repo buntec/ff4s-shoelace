@@ -11,7 +11,7 @@ import scala.concurrent.duration._
 case class State(
     foo: Int = 17,
     toggle: Boolean = true,
-    progress: Double = 25.0
+    progress: Int = 25
 )
 
 sealed trait Action
@@ -40,7 +40,7 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
   import dsl._
   import dsl.html._
 
-  import ff4s.shoelace.{components => sl}
+  import ff4s.{shoelace => sl}
 
   val heading = h1(cls := "m-4 text-4xl", "Shoelace examples")
 
@@ -49,21 +49,21 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
       cls := "flex flex-col items-center h-screen",
       heading,
       "Range",
-      sl.range(
+      sl.Range(
         // sl.range.label := "progress",
-        sl.range.slots.label := span("blah"),
-        sl.range.min := 0.0,
-        sl.range.max := 100.0,
-        sl.range.value := state.progress,
-        sl.range.onChange := { ev =>
+        sl.Range.slots.label := span("blah"),
+        sl.Range.min := 0,
+        sl.Range.max := 100,
+        sl.Range.value := state.progress,
+        sl.Range.onChange := { ev =>
           println(
             s"change: ${ev.target}"
           );
           None
         },
-        sl.range.onInput := { ev =>
+        sl.Range.onInput := { ev =>
           println(
-            s"input: ${ev.detail} ${js.JSON.stringify(ev.detail.asInstanceOf[js.Any])}"
+            s"input: ${ev} ${js.JSON.stringify(ev.asInstanceOf[js.Any])}"
           );
           None
         }

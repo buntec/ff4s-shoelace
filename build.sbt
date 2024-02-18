@@ -18,6 +18,8 @@ ThisBuild / developers := List(
 
 ThisBuild / tlFatalWarnings := false
 
+lazy val generateShoelace = taskKey[Unit]("generates the component definitions")
+
 lazy val scalajsDomVersion = "2.8.0"
 lazy val circeVersion = "0.14.6"
 lazy val catsVersion = "2.10.0"
@@ -38,6 +40,18 @@ lazy val root =
 
 lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
   .enablePlugins(ScalaJSPlugin)
+  .settings(
+    generateShoelace := {
+      new ShoelaceGenerator(
+        onlineSourceRoot =
+          "https://github.com/buntec/ff4s-shoelace/blob/master",
+        customElementsJsonPath =
+          "node_modules/@shoelace-style/shoelace/dist/custom-elements.json",
+        baseOutputDirectoryPath = "ff4s-shoelace/src/main/scala/ff4s/shoelace",
+        baseOutputPackagePath = "ff4s.shoelace"
+      ).generate()
+    }
+  )
   .settings(
     name := "ff4s-shoelace",
     libraryDependencies ++= Seq(
