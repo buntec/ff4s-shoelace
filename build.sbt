@@ -13,6 +13,7 @@ ThisBuild / startYear := Some(2024)
 ThisBuild / tlSonatypeUseLegacyHost := false
 ThisBuild / licenses := Seq(License.MIT, License.Apache2)
 ThisBuild / tlCiHeaderCheck := false
+ThisBuild / tlCiDependencyGraphJob := false
 
 ThisBuild / developers := List(tlGitHubDev("buntec", "Christoph Bunte"))
 
