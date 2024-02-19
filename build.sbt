@@ -30,7 +30,7 @@ lazy val kindProjectorVersion = "0.13.2"
 lazy val betterMonadicForVersion = "0.3.1"
 lazy val fs2DomVersion = "0.2.1"
 
-lazy val ff4sVersion = "0.20.0-6-b83f2a8-20240218T091620Z-SNAPSHOT"
+lazy val ff4sVersion = "0.20.0-7-1cdd98f-SNAPSHOT"
 
 lazy val root =
   tlCrossRootProject.aggregate(`ff4s-shoelace`, examples)
