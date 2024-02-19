@@ -12,10 +12,12 @@ ThisBuild / organizationName := "buntec"
 ThisBuild / startYear := Some(2024)
 ThisBuild / tlSonatypeUseLegacyHost := false
 ThisBuild / licenses := Seq(License.MIT, License.Apache2)
+ThisBuild / tlCiHeaderCheck := false
 
 ThisBuild / developers := List(tlGitHubDev("buntec", "Christoph Bunte"))
 
 ThisBuild / tlFatalWarnings := false
+ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("11"))
 
 lazy val generateShoelace = taskKey[Unit]("generates the component definitions")
 

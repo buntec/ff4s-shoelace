@@ -1,70 +1,70 @@
 case class WebComponentsDef(
-  elements: List[WebComponentsDef.Element]
+    elements: List[WebComponentsDef.Element]
 )
 
 object WebComponentsDef {
 
   case class Element(
-    tagName: String,
-    scalaName: String,
-    importPath: String, // e.g. "components/button/button.js"
-    elementBaseType: String, // e.g. "HTMLButtonElement"
-    description: List[String],
-    docUrl: Option[String],
-    events: List[Event],
-    allJsProperties: List[Field],
-    writableNonReflectedProperties: List[Field],
-    attributes: List[Attribute],
-    cssProperties: List[CssProperty],
-    cssParts: List[CssPart],
-    slots: List[Slot]
+      tagName: String,
+      scalaName: String,
+      importPath: String, // e.g. "components/button/button.js"
+      elementBaseType: String, // e.g. "HTMLButtonElement"
+      description: List[String],
+      docUrl: Option[String],
+      events: List[Event],
+      allJsProperties: List[Field],
+      writableNonReflectedProperties: List[Field],
+      attributes: List[Attribute],
+      cssProperties: List[CssProperty],
+      cssParts: List[CssPart],
+      slots: List[Slot]
   )
 
   case class Event(
-    description: List[String],
-    domName: String,
-    scalaName: String,
-    customType: Option[CustomEventType]
+      description: List[String],
+      domName: String,
+      scalaName: String,
+      customType: Option[CustomEventType]
   )
 
   case class Field(
-    propName: String,
-    propScalaName: String,
-    attrName: Option[String],
-    reflected: Boolean,
-    readonly: Boolean,
-    jsTypes: List[JsType],
-    default: Option[String],
-    description: List[String]
+      propName: String,
+      propScalaName: String,
+      attrName: Option[String],
+      reflected: Boolean,
+      readonly: Boolean,
+      jsTypes: List[JsType],
+      default: Option[String],
+      description: List[String]
   )
 
   case class Attribute(
-    attrName: String,
-    scalaName: String,
-    scalaAliases: List[String],
-    jsTypes: List[JsType],
-    default: Option[String],
-    description: List[String]
+      attrName: String,
+      scalaName: String,
+      scalaAliases: List[String],
+      jsTypes: List[JsType],
+      default: Option[String],
+      description: List[String]
   )
 
   case class CssProperty(
-    description: List[String],
-    cssName: String, // e.g. "--border-color"
-    cssType: CssType,
-    scalaName: String
+      description: List[String],
+      cssName: String, // e.g. "--border-color"
+      cssType: CssType,
+      scalaName: String
   )
 
   case class CssPart(
-    description: List[String],
-    cssName: String,
-    scalaName: String
+      description: List[String],
+      cssName: String,
+      scalaName: String
   )
 
   case class Slot(
-    description: List[String],
-    domName: String,
-    scalaName: String,
-    isDefault: Boolean
+      description: List[String],
+      domName: String,
+      scalaName: String,
+      isDefault: Boolean
   )
 
   sealed abstract class JsType
@@ -86,7 +86,6 @@ object WebComponentsDef {
 
   case class JsCustomType(str: String) extends JsType
 
-
   sealed abstract class CssType
 
   case object CssLengthType extends CssType
@@ -99,17 +98,16 @@ object WebComponentsDef {
 
   case object CssLineType extends CssType // dotted, dashed, etc.
 
-
   case class CustomEventType(
-    rawName: String,
-    scalaName: String,
-    fields: List[CustomEventTypeField]
+      rawName: String,
+      scalaName: String,
+      fields: List[CustomEventTypeField]
   )
 
   case class CustomEventTypeField(
-    domName: String,
-    scalaName: String,
-    jsTypes: List[JsType],
-    description: List[String]
+      domName: String,
+      scalaName: String,
+      jsTypes: List[JsType],
+      description: List[String]
   )
 }

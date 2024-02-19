@@ -172,6 +172,8 @@ class ShoelaceGenerator(
   ): Unit = {
     line(s"package ${eventTypesPackagePath}")
     line()
+    line("// format: off")
+    line()
     if (componentsPackagePath != eventTypesPackagePath) {
       line(s"import ${componentsPackagePath}.*")
     }
@@ -213,6 +215,8 @@ class ShoelaceGenerator(
   ): Unit = {
 
     line(s"package ${componentsPackagePath}")
+    line()
+    line("// format: off")
     line()
 
     val supportsControlledInput = st.allowControlKeys(element.tagName).nonEmpty

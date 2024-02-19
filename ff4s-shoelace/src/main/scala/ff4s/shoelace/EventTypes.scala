@@ -1,5 +1,7 @@
 package ff4s.shoelace
 
+// format: off
+
 import org.scalajs.dom
 
 import scala.scalajs.js
