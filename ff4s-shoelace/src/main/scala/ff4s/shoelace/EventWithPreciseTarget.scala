@@ -1,7 +1,8 @@
 package ff4s.shoelace
 
 import org.scalajs.dom
-import org.scalajs.dom.{EventInit, EventTarget}
+import org.scalajs.dom.EventInit
+import org.scalajs.dom.EventTarget
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal

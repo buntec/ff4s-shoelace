@@ -1,14 +1,14 @@
 package examples.example1
 
 import cats.effect.Async
-import cats.syntax.all._
 import cats.effect.implicits._
-
+import cats.syntax.all._
 import fs2.Stream
+import org.scalajs.dom
+
+import scala.concurrent.duration.*
 
 import scalajs.js
-import scala.concurrent.duration.*
-import org.scalajs.dom
 
 case class State(
     darkMode: Boolean = false,
