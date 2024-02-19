@@ -1,25 +1,20 @@
 package examples.example1
 
 import cats.effect.Async
-import cats.effect.implicits._
 import cats.syntax.all._
-import fs2.Stream
 import scalajs.js
 
-import scala.concurrent.duration._
-
 case class State(
-    foo: Int = 17,
-    toggle: Boolean = true,
-    progress: Int = 25
+    rangeValue: Int = 25,
+    checkboxChecked: Boolean = false,
+    dropdownChecked: Boolean = false
 )
 
 sealed trait Action
 
 object Action {
 
-  case class Noop() extends Action
-  case class Toggle() extends Action
+  case class ModifyState(f: State => State) extends Action
 
 }
 
@@ -29,9 +24,7 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
 
     store <- ff4s.Store[F, State, Action](State())(_ =>
       _ match {
-        case Action.Noop() => (_, none)
-        case Action.Toggle() =>
-          state => state.copy(toggle = !state.toggle) -> none
+        case Action.ModifyState(f) => state => f(state) -> none
       }
     )
 
@@ -42,30 +35,137 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
 
   import ff4s.{shoelace => sl}
 
-  val heading = h1(cls := "m-4 text-4xl", "Shoelace examples")
+  val alert = sl.Alert(
+    sl.Alert.open := true,
+    sl.Alert.slots.icon := sl.Icon(sl.Icon.name := "info-circle"),
+    "This is a standard alert. You can customize its content and even the icon."
+  )
 
-  override val view = useState { state =>
-    div(
-      cls := "flex flex-col items-center h-screen",
-      heading,
-      "Range",
-      sl.Range(
-        // sl.range.label := "progress",
-        sl.Range.slots.label := span("blah"),
-        sl.Range.min := 0,
-        sl.Range.max := 100,
-        sl.Range.value := state.progress,
-        sl.Range.onChange := { ev =>
-          println(s"change: ${ev.target.value}");
-          None
-        },
-        sl.Range.onInput := { ev =>
-          println(s"input: ${ev.target.value}");
-          None
-        }
-      )
+  val animatedImage =
+    sl.AnimatedImage(
+      sl.AnimatedImage.src := "https://shoelace.style/assets/images/walk.gif",
+      sl.AnimatedImage.alt := "Animation of untied shoes walking on pavement"
     )
 
-  }
+  val animation = div(
+    cls := "animation-overview",
+    sl.Animation(
+      sl.Animation.name := "bounce",
+      sl.Animation.duration := 2000,
+      sl.Animation.play := true,
+      div(cls := "box")
+    ),
+    sl.Animation(
+      sl.Animation.name := "jello",
+      sl.Animation.duration := 2000,
+      sl.Animation.play := true,
+      div(cls := "box")
+    ),
+    sl.Animation(
+      sl.Animation.name := "heartBeat",
+      sl.Animation.duration := 2000,
+      sl.Animation.play := true,
+      div(cls := "box")
+    ),
+    sl.Animation(
+      sl.Animation.name := "flip",
+      sl.Animation.duration := 2000,
+      sl.Animation.play := true,
+      div(cls := "box")
+    )
+  )
+
+  val avatar = sl.Avatar(
+    sl.Avatar.label := "User avatar"
+  )
+
+  val badge = div(
+    cls := "flex flex-row items-center gap-2",
+    sl.Badge(sl.Badge.variant := "primary", "Primary"),
+    sl.Badge(sl.Badge.variant := "success", "Success"),
+    sl.Badge(sl.Badge.variant := "neutral", "Neutral"),
+    sl.Badge(sl.Badge.variant := "warning", "Warning"),
+    sl.Badge(sl.Badge.variant := "danger", "Danger")
+  )
+
+  val checkbox = useState(state =>
+    sl.Checkbox(
+      sl.Checkbox.checked := state.checkboxChecked,
+      sl.Checkbox.onChange := (ev =>
+        Action.ModifyState(_.copy(checkboxChecked = ev.target.checked)).some
+      ),
+      s"Checkbox: ${if (state.checkboxChecked) "checked" else "unchecked"}"
+    )
+  )
+
+  val copyButton = sl.CopyButton(sl.CopyButton.value := "Shoelace rocks!")
+
+  val dropDown = useState(state =>
+    div(
+      span(s"checked: ${state.dropdownChecked}"),
+      sl.Dropdown(
+        sl.Dropdown.slots.trigger := sl
+          .Button(sl.Button.caret := true, "Dropdown"),
+        sl.Menu(
+          sl.MenuItem("Dropdown Item 1"),
+          sl.MenuItem("Dropdown Item 2"),
+          sl.MenuItem("Dropdown Item 2"),
+          sl.Divider(),
+          sl.MenuItem(
+            sl.MenuItem.`type` := "checkbox",
+            sl.MenuItem.value := "checkbox-item",
+            sl.MenuItem.checked := state.dropdownChecked,
+            "Checkbox"
+          ),
+          sl.MenuItem(sl.MenuItem.disabled := true, "Disabled"),
+          sl.Divider(),
+          sl.Menu.onSelect := { ev =>
+            val item = ev.asInstanceOf[js.Dynamic].detail.item
+            println(item.value)
+            if (item.value.asInstanceOf[String] == "checkbox-item")
+              Action.ModifyState(_.copy(dropdownChecked = ev.item.checked)).some
+            else
+              None
+          }
+        )
+      )
+    )
+  )
+
+  val range = useState(state =>
+    sl.Range(
+      sl.Range.slots.label := span(s"Value: ${state.rangeValue}"),
+      sl.Range.min := 0,
+      sl.Range.max := 100,
+      sl.Range.value := state.rangeValue,
+      sl.Range.onChange := (ev =>
+        Action.ModifyState(_.copy(rangeValue = ev.target.value)).some
+      )
+    )
+  )
+
+  override val view =
+    div(
+      idAttr := "page",
+      span(cls := "heading", "Shoelace components"),
+      span(cls := "component-heading", "Alert"),
+      alert,
+      span(cls := "component-heading", "Animated Image"),
+      animatedImage,
+      span(cls := "component-heading", "Animation"),
+      animation,
+      span(cls := "component-heading", "Avatar"),
+      avatar,
+      span(cls := "component-heading", "Badge"),
+      badge,
+      span(cls := "component-heading", "Checkbox"),
+      checkbox,
+      span(cls := "component-heading", "Copy Button"),
+      copyButton,
+      span(cls := "component-heading", "Dropdown"),
+      dropDown,
+      span(cls := "component-heading", "Range"),
+      range
+    )
 
 }

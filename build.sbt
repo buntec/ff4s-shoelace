@@ -11,6 +11,7 @@ ThisBuild / organization := "io.github.buntec"
 ThisBuild / organizationName := "buntec"
 ThisBuild / startYear := Some(2024)
 ThisBuild / tlSonatypeUseLegacyHost := false
+ThisBuild / licenses := Seq(License.MIT, License.Apache2)
 
 ThisBuild / developers := List(
   tlGitHubDev("buntec", "Christoph Bunte")
@@ -26,14 +27,10 @@ lazy val catsVersion = "2.10.0"
 lazy val catsEffectVersion = "3.5.3"
 lazy val fs2Version = "3.9.4"
 lazy val kindProjectorVersion = "0.13.2"
-lazy val http4sDomVersion = "0.2.11"
-lazy val http4sVersion = "0.23.25"
 lazy val betterMonadicForVersion = "0.3.1"
-lazy val scalaJsSnabbdomVersion = "0.2.0-M3"
 lazy val fs2DomVersion = "0.2.1"
 
-lazy val ff4sVersion =
-  "0.20.0-6-b83f2a8-20240218T091620Z-SNAPSHOT" // "0.20.0-6-b83f2a8-SNAPSHOT"
+lazy val ff4sVersion = "0.20.0-6-b83f2a8-20240218T091620Z-SNAPSHOT"
 
 lazy val root =
   tlCrossRootProject.aggregate(`ff4s-shoelace`, examples)
@@ -57,19 +54,12 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
     libraryDependencies ++= Seq(
       "io.github.buntec" %%% "ff4s" % ff4sVersion,
       "org.scala-js" %%% "scalajs-dom" % scalajsDomVersion,
+      "com.armanbilge" %%% "fs2-dom" % fs2DomVersion,
       "org.typelevel" %%% "cats-core" % catsVersion,
-      "org.typelevel" %%% "cats-free" % catsVersion,
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-effect-kernel" % catsEffectVersion,
       "org.typelevel" %%% "cats-effect-std" % catsEffectVersion,
-      "co.fs2" %%% "fs2-core" % fs2Version,
-      "org.http4s" %%% "http4s-dom" % http4sDomVersion,
-      "org.http4s" %%% "http4s-client" % http4sVersion,
-      "org.http4s" %%% "http4s-circe" % http4sVersion,
-      "io.circe" %%% "circe-generic" % circeVersion,
-      "io.circe" %%% "circe-literal" % circeVersion,
-      "io.circe" %%% "circe-parser" % circeVersion,
-      "com.armanbilge" %%% "fs2-dom" % fs2DomVersion
+      "co.fs2" %%% "fs2-core" % fs2Version
     )
   )
 
