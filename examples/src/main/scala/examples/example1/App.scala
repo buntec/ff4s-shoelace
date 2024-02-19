@@ -10,7 +10,8 @@ case class State(
     checkboxChecked: Boolean = false,
     dropdownChecked: Boolean = false,
     selectValue: Option[String] = None,
-    multiSelectValue: List[String] = Nil
+    multiSelectValue: List[String] = Nil,
+    switchChecked: Boolean = false
 )
 
 sealed trait Action
@@ -188,6 +189,33 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
     )
   )
 
+  val switch = useState(state =>
+    div(
+      cls := "flex flex-col items-center gap-2",
+      s"checked: ${state.switchChecked}",
+      sl.Switch(
+        sl.Switch.checked := state.switchChecked,
+        sl.Switch.onChange := (ev =>
+          Action.ModifyState(_.copy(switchChecked = ev.target.checked)).some
+        ),
+        "Switch"
+      )
+    )
+  )
+
+  val tag = div(
+    sl.Tag(sl.Tag.variant := "primary", "Primary"),
+    sl.Tag(sl.Tag.variant := "success", "Success"),
+    sl.Tag(sl.Tag.variant := "neutral", "Neutral"),
+    sl.Tag(sl.Tag.variant := "warning", "Warning"),
+    sl.Tag(sl.Tag.variant := "danger", "Danger")
+  )
+
+  val tooltip = sl.Tooltip(
+    sl.Tooltip.content := "This is a tooltip",
+    sl.Button("hover me")
+  )
+
   override val view =
     div(
       idAttr := "page",
@@ -209,7 +237,13 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
       span(cls := "component-heading", "Range"),
       range,
       span(cls := "component-heading", "Select"),
-      select
+      select,
+      span(cls := "component-heading", "Switch"),
+      switch,
+      span(cls := "component-heading", "Tag"),
+      tag,
+      span(cls := "component-heading", "Tooltip"),
+      tooltip
     )
 
 }
