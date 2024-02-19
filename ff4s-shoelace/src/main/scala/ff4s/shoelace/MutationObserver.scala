@@ -25,7 +25,7 @@ object MutationObserver extends WebComponent {
   // -- Events --
 
   /** Emitted when a mutation occurs. */
-  lazy val onMutation: EventProp[MutationEvent] = EventProp[MutationEvent]("sl-mutation")
+  lazy val onMutation: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[MutationEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[MutationEvent]]("sl-mutation")
 
 
   // -- Attributes --

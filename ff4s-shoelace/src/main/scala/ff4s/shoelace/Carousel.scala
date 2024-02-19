@@ -23,7 +23,7 @@ object Carousel extends WebComponent {
   // -- Events --
 
   /** Emitted when the active slide changes. */
-  lazy val onSlideChange: EventProp[SlideChangeEvent] = EventProp[SlideChangeEvent]("sl-slide-change")
+  lazy val onSlideChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SlideChangeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SlideChangeEvent]]("sl-slide-change")
 
 
   // -- Attributes --

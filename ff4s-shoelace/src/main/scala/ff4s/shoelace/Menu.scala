@@ -25,7 +25,7 @@ object Menu extends WebComponent {
   // -- Events --
 
   /** Emitted when a menu item is selected. */
-  lazy val onSelect: EventProp[SelectEvent] = EventProp[SelectEvent]("sl-select")
+  lazy val onSelect: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectEvent]]("sl-select")
 
 
   // -- Attributes --

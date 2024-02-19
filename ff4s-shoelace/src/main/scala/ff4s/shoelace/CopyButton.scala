@@ -25,10 +25,10 @@ object CopyButton extends WebComponent {
   // -- Events --
 
   /** Emitted when the data has been copied. */
-  lazy val onCopy: EventProp[CopyEvent] = EventProp[CopyEvent]("sl-copy")
+  lazy val onCopy: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[CopyEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[CopyEvent]]("sl-copy")
 
   /** Emitted when the data could not be copied. */
-  lazy val onError: EventProp[ErrorEvent] = EventProp[ErrorEvent]("sl-error")
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --

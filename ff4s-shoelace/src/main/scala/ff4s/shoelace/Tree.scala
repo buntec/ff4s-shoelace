@@ -25,7 +25,7 @@ object Tree extends WebComponent {
   // -- Events --
 
   /** Emitted when a tree item is selected or deselected. */
-  lazy val onSelectionChange: EventProp[SelectionChangeEvent] = EventProp[SelectionChangeEvent]("sl-selection-change")
+  lazy val onSelectionChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectionChangeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectionChangeEvent]]("sl-selection-change")
 
 
   // -- Attributes --

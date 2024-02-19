@@ -25,10 +25,10 @@ object TabGroup extends WebComponent {
   // -- Events --
 
   /** Emitted when a tab is shown. */
-  lazy val onTabShow: EventProp[TabShowEvent] = EventProp[TabShowEvent]("sl-tab-show")
+  lazy val onTabShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabShowEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabShowEvent]]("sl-tab-show")
 
   /** Emitted when a tab is hidden. */
-  lazy val onTabHide: EventProp[TabHideEvent] = EventProp[TabHideEvent]("sl-tab-hide")
+  lazy val onTabHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabHideEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabHideEvent]]("sl-tab-hide")
 
 
   // -- Attributes --

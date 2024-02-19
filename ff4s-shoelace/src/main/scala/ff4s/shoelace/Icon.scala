@@ -28,7 +28,7 @@ object Icon extends WebComponent {
   lazy val onLoad: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-load")
 
   /** Emitted when the icon fails to load due to an error. When using `spriteSheet: true` this will not emit. */
-  lazy val onError: EventProp[ErrorEvent] = EventProp[ErrorEvent]("sl-error")
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --

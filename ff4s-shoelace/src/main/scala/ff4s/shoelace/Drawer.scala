@@ -40,7 +40,7 @@ object Drawer extends WebComponent {
   lazy val onInitialFocus: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-initial-focus")
 
   /** Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss. */
-  lazy val onRequestClose: EventProp[RequestCloseEvent] = EventProp[RequestCloseEvent]("sl-request-close")
+  lazy val onRequestClose: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[RequestCloseEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[RequestCloseEvent]]("sl-request-close")
 
 
   // -- Attributes --

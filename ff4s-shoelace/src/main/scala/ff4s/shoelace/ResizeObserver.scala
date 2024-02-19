@@ -25,7 +25,7 @@ object ResizeObserver extends WebComponent {
   // -- Events --
 
   /** Emitted when the element is resized. */
-  lazy val onResize: EventProp[ResizeEvent] = EventProp[ResizeEvent]("sl-resize")
+  lazy val onResize: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ResizeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ResizeEvent]]("sl-resize")
 
 
   // -- Attributes --

@@ -28,7 +28,7 @@ object Rating extends WebComponent {
   lazy val onChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-change")
 
   /** Emitted when the user hovers over a value. The `phase` property indicates when hovering starts, moves to a new value, or ends. The `value` property tells what the rating's value would be if the user were to commit to the hovered value. */
-  lazy val onHover: EventProp[HoverEvent] = EventProp[HoverEvent]("sl-hover")
+  lazy val onHover: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[HoverEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[HoverEvent]]("sl-hover")
 
 
   // -- Attributes --

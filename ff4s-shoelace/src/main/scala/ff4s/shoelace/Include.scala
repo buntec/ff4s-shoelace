@@ -28,7 +28,7 @@ object Include extends WebComponent {
   lazy val onLoad: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-load")
 
   /** Emitted when the included file fails to load due to an error. */
-  lazy val onError: EventProp[ErrorEvent] = EventProp[ErrorEvent]("sl-error")
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --

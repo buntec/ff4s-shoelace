@@ -10,24 +10,21 @@ import scala.scalajs.js.|
 /** Common Shoelace event types */
 object EventTypes {
 
-  @js.native
-  trait CustomEvent extends dom.Event
-
 
   @js.native
-  trait CopyEvent extends CustomEvent {
+  trait CopyEvent extends js.Object {
 
     val value: String
   }
 
   @js.native
-  trait ErrorEvent extends CustomEvent {
+  trait ErrorEvent extends js.Object {
 
     val status: Int | Unit
   }
 
   @js.native
-  trait HoverEvent extends CustomEvent {
+  trait HoverEvent extends js.Object {
 
     /** 'start' | 'move' | 'end' */
     val phase: String
@@ -36,38 +33,38 @@ object EventTypes {
   }
 
   @js.native
-  trait MutationEvent extends CustomEvent {
+  trait MutationEvent extends js.Object {
 
     val mutationList: js.Array[dom.MutationRecord]
   }
 
   @js.native
-  trait RequestCloseEvent extends CustomEvent {
+  trait RequestCloseEvent extends js.Object {
 
     /** 'close-button' | 'keyboard' | 'overlay' */
     val source: String
   }
 
   @js.native
-  trait ResizeEvent extends CustomEvent {
+  trait ResizeEvent extends js.Object {
 
     val entries: js.Array[dom.ResizeObserverEntry]
   }
 
   @js.native
-  trait SelectEvent extends CustomEvent {
+  trait SelectEvent extends js.Object {
 
     val item: MenuItem.Ref
   }
 
   @js.native
-  trait SelectionChangeEvent extends CustomEvent {
+  trait SelectionChangeEvent extends js.Object {
 
     val selection: js.Array[TreeItem.Ref]
   }
 
   @js.native
-  trait SlideChangeEvent extends CustomEvent {
+  trait SlideChangeEvent extends js.Object {
 
     val index: Int
 
@@ -75,13 +72,13 @@ object EventTypes {
   }
 
   @js.native
-  trait TabHideEvent extends CustomEvent {
+  trait TabHideEvent extends js.Object {
 
     val name: String
   }
 
   @js.native
-  trait TabShowEvent extends CustomEvent {
+  trait TabShowEvent extends js.Object {
 
     val name: String
   }

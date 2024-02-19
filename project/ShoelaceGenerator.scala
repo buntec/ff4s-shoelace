@@ -188,13 +188,10 @@ class ShoelaceGenerator(
     blockCommentLines(List("Common Shoelace event types"))
     enter(s"object ${eventTypesObjectName} {", "}") {
       line()
-      line("@js.native")
-      line(s"trait ${baseCustomEventType} extends dom.${baseDomEventType}")
-      line()
       eventTypes.foreach { et =>
         line()
         line("@js.native")
-        enter(s"trait ${et.scalaName} extends ${baseCustomEventType} {", "}") {
+        enter(s"trait ${et.scalaName} extends js.Object {", "}") {
           et.fields.foreach { field =>
             val scalaTypeStr = st.scalaPropOutputType(
               s"prop `${field.domName}` in event type `${et.scalaName}`",
@@ -348,8 +345,9 @@ class ShoelaceGenerator(
     line("// -- Events --")
     element.events.foreach { event =>
       val customEventTypeDef = event.customType
-      val eventType =
-        customEventTypeDef.map(_.scalaName).getOrElse(st.baseEventType)
+      val eventType = customEventTypeDef.map(_.scalaName).fold(st.baseEventType)(cet =>
+          s"${st.baseEventType} with HasDetail[${cet}]"
+          )
       line()
       blockCommentLines(event.description)
       line(

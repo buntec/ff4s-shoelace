@@ -41,12 +41,6 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
     "This is a standard alert. You can customize its content and even the icon."
   )
 
-  val animatedImage =
-    sl.AnimatedImage(
-      sl.AnimatedImage.src := "https://shoelace.style/assets/images/walk.gif",
-      sl.AnimatedImage.alt := "Animation of untied shoes walking on pavement"
-    )
-
   val animation = div(
     cls := "animation-overview",
     sl.Animation(
@@ -94,40 +88,44 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
       sl.Checkbox.onChange := (ev =>
         Action.ModifyState(_.copy(checkboxChecked = ev.target.checked)).some
       ),
-      s"Checkbox: ${if (state.checkboxChecked) "checked" else "unchecked"}"
+      "Checkbox"
     )
   )
 
   val copyButton = sl.CopyButton(sl.CopyButton.value := "Shoelace rocks!")
 
   val dropDown = useState(state =>
-    div(
-      span(s"checked: ${state.dropdownChecked}"),
-      sl.Dropdown(
-        sl.Dropdown.slots.trigger := sl
-          .Button(sl.Button.caret := true, "Dropdown"),
-        sl.Menu(
-          sl.MenuItem("Dropdown Item 1"),
-          sl.MenuItem("Dropdown Item 2"),
-          sl.MenuItem("Dropdown Item 2"),
-          sl.Divider(),
-          sl.MenuItem(
-            sl.MenuItem.`type` := "checkbox",
-            sl.MenuItem.value := "checkbox-item",
-            sl.MenuItem.checked := state.dropdownChecked,
-            "Checkbox"
-          ),
-          sl.MenuItem(sl.MenuItem.disabled := true, "Disabled"),
-          sl.Divider(),
-          sl.Menu.onSelect := { ev =>
-            val item = ev.asInstanceOf[js.Dynamic].detail.item
-            println(item.value)
-            if (item.value.asInstanceOf[String] == "checkbox-item")
-              Action.ModifyState(_.copy(dropdownChecked = ev.item.checked)).some
-            else
-              None
-          }
-        )
+    sl.Dropdown(
+      sl.Dropdown.slots.trigger := sl
+        .Button(sl.Button.caret := true, "Dropdown"),
+      sl.Menu(
+        sl.MenuItem("Dropdown Item 1"),
+        sl.MenuItem("Dropdown Item 2"),
+        sl.MenuItem("Dropdown Item 2"),
+        sl.Divider(),
+        sl.MenuItem(
+          sl.MenuItem.`type` := "checkbox",
+          sl.MenuItem.value := "checkbox-item",
+          sl.MenuItem.checked := state.dropdownChecked,
+          "Checkbox"
+        ),
+        sl.MenuItem(sl.MenuItem.disabled := true, "Disabled"),
+        sl.Divider(),
+        sl.MenuItem(
+          "Prefix",
+          sl.MenuItem.slots.prefix := sl.Icon(sl.Icon.name := "gift")
+        ),
+        sl.MenuItem(
+          "Suffix Icon",
+          sl.MenuItem.slots.suffix := sl.Icon(sl.Icon.name := "heart")
+        ),
+        sl.Menu.onSelect := { ev =>
+          val item = ev.detail.item
+          if (item.value == "checkbox-item")
+            Action.ModifyState(_.copy(dropdownChecked = item.checked)).some
+          else
+            None
+        }
       )
     )
   )
@@ -150,8 +148,6 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
       span(cls := "heading", "Shoelace components"),
       span(cls := "component-heading", "Alert"),
       alert,
-      span(cls := "component-heading", "Animated Image"),
-      animatedImage,
       span(cls := "component-heading", "Animation"),
       animation,
       span(cls := "component-heading", "Avatar"),
