@@ -11,10 +11,15 @@
     src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.js"></script>
   <style type="text/tailwindcss">
     body {
+      font-family: var(--sl-font-sans);
       color: var(--sl-color-gray-800);
       background-color: var(--sl-color-gray-50);
       @apply font-thin;
+    }
 
+    body .dark {
+      color: var(--sl-color-gray-100);
+      background-color: var(--sl-color-gray-900);
     }
 
     #page {
