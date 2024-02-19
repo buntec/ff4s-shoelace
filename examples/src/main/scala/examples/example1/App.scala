@@ -2,12 +2,15 @@ package examples.example1
 
 import cats.effect.Async
 import cats.syntax.all._
+
 import scalajs.js
 
 case class State(
     rangeValue: Int = 25,
     checkboxChecked: Boolean = false,
-    dropdownChecked: Boolean = false
+    dropdownChecked: Boolean = false,
+    selectValue: Option[String] = None,
+    multiSelectValue: List[String] = Nil
 )
 
 sealed trait Action
@@ -142,6 +145,49 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
     )
   )
 
+  val select = useState(state =>
+    div(
+      span(s"Single select: ${state.selectValue.fold("")(identity)}"),
+      sl.Select(
+        sl.Option(sl.Option.value := "option-1", "Option 1"),
+        sl.Option(sl.Option.value := "option-2", "Option 2"),
+        sl.Option(sl.Option.value := "option-3", "Option 3"),
+        sl.Option(sl.Option.value := "option-4", "Option 4"),
+        sl.Option(sl.Option.value := "option-5", "Option 5"),
+        sl.Option(sl.Option.value := "option-6", "Option 6"),
+        sl.Select.value := (state.selectValue.getOrElse(""): String),
+        sl.Select.onChange := (ev =>
+          Action
+            .ModifyState(
+              _.copy(selectValue = ev.target.value.asInstanceOf[String].some)
+            )
+            .some
+        )
+      ),
+      span(s"Multi select: ${state.multiSelectValue.mkString(", ")}"),
+      sl.Select(
+        sl.Select.multiple := true,
+        sl.Select.clearable := true,
+        sl.Option(sl.Option.value := "option-1", "Option 1"),
+        sl.Option(sl.Option.value := "option-2", "Option 2"),
+        sl.Option(sl.Option.value := "option-3", "Option 3"),
+        sl.Option(sl.Option.value := "option-4", "Option 4"),
+        sl.Option(sl.Option.value := "option-5", "Option 5"),
+        sl.Option(sl.Option.value := "option-6", "Option 6"),
+        sl.Select.value := (js.Array(state.multiSelectValue: _*)),
+        sl.Select.onChange := (ev =>
+          Action
+            .ModifyState(
+              _.copy(multiSelectValue =
+                ev.target.value.asInstanceOf[js.Array[String]].toList
+              )
+            )
+            .some
+        )
+      )
+    )
+  )
+
   override val view =
     div(
       idAttr := "page",
@@ -161,7 +207,9 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
       span(cls := "component-heading", "Dropdown"),
       dropDown,
       span(cls := "component-heading", "Range"),
-      range
+      range,
+      span(cls := "component-heading", "Select"),
+      select
     )
 
 }

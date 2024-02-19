@@ -78,9 +78,9 @@ class ShoelaceGenerator(
       case "dom.MutationObserver" | "js.Array[js.Object]" => "asIsProp"
       case _ =>
         println(
-          s"PROP ...No impl defined for scala type `${scalaTypeStr}`, trying `htmlProp` for now."
+          s"PROP ...No impl defined for scala type `${scalaTypeStr}`, trying `asIsProp` for now."
         )
-        "htmlProp"
+        "asIsProp"
     }
   }
 
@@ -345,9 +345,11 @@ class ShoelaceGenerator(
     line("// -- Events --")
     element.events.foreach { event =>
       val customEventTypeDef = event.customType
-      val eventType = customEventTypeDef.map(_.scalaName).fold(st.baseEventType)(cet =>
+      val eventType = customEventTypeDef
+        .map(_.scalaName)
+        .fold(st.baseEventType)(cet =>
           s"${st.baseEventType} with HasDetail[${cet}]"
-          )
+        )
       line()
       blockCommentLines(event.description)
       line(

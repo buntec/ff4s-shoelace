@@ -123,6 +123,13 @@ object Select extends WebComponent {
 
   // -- Props --
 
+  /**
+    * The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the
+    * value attribute will be a space-delimited list of values based on the options selected, and the value property will
+    * be an array. **For this reason, values must not contain spaces.**
+    */
+  lazy val value: HtmlProp[String | js.Array[String], _] = asIsProp("value")
+
 
   // -- Slots --
 
@@ -211,6 +218,13 @@ object Select extends WebComponent {
 
     /** The name of the select, submitted as a name/value pair with form data. */
     var name: String
+
+    /**
+      * The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the
+      * value attribute will be a space-delimited list of values based on the options selected, and the value property will
+      * be an array. **For this reason, values must not contain spaces.**
+      */
+    var value: String | js.Array[String]
 
     /** The select's size. */
     var size: String

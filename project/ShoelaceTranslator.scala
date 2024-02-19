@@ -128,7 +128,7 @@ class ShoelaceTranslator(
       // #nc #nc #nc vvvvvv TODO
       case ("sl-color-picker", "swatches", _) => true // Composite List[String] separated by ; IF used as an attribute. Property is an array, but not reflected.
       case ("sl-format-date" | "sl-relative-time", "date", _) => true // Date | String - convert date with `date.toISOString()` - For MVP, just make an attribute, and a codec for date?
-      case ("sl-select", "value" | "defaultValue", _) => true // String | String[]. Space-delimited string in html attr. Use `value` vs `values`?
+      // case ("sl-select", "value" | "defaultValue", _) => true // String | String[]. Space-delimited string in html attr. Use `value` vs `values`?
       // #nc #nc #nc ^^^^^ TODO
       // Don't want those props, we have (non-reflected) attributes for them.
       case (_, "defaultValue" | "defaultChecked", _) => true
@@ -578,6 +578,8 @@ class ShoelaceTranslator(
           println(s"WARNING: scalaPropInputTypeStr: Unhandled js type `${t}` for prop `${prop.propName}` in tag `${tagName}`.")
           t.toString
       }
+    } else if (printableTypes.toSet == Set(Def.JsStringType, Def.JsCustomType("string[]"))) {
+      "String | js.Array[String]"
       //} else if (printableTypes == List(Def.JsCustomType("Element"), Def.JsCustomType("Element[]"))) {
       //  println(s"WARNING: scalaAttrInputType: Multi-element input not supported for attr `${attr.attrName}` in tag `${tagName}`.")
       //  "Element" // #nc or Element[], but how to express that...
@@ -617,6 +619,7 @@ class ShoelaceTranslator(
       case Def.JsNumberType => "Int" // #nc for now
       case Def.JsBooleanType => "Boolean"
       case Def.JsStringType => "String"
+      case Def.JsCustomType("string[]") => "js.Array[String]"
       case Def.JsCustomType("Keyframe[]") => "js.Array[js.Object]" // #nc not sure what the exact type should be
       case Def.JsCustomType("MutationObserver") => "dom.MutationObserver"
       case Def.JsCustomType("MutationRecord[]") => "js.Array[dom.MutationRecord]"
