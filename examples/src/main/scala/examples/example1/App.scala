@@ -306,6 +306,21 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
     )
   )
 
+  val skeleton = div(
+    cls := "flex flex-col items-center gap-2",
+    "no effect",
+    sl.Skeleton(sl.Skeleton.effect := "none"),
+    "sheen",
+    sl.Skeleton(sl.Skeleton.effect := "sheen"),
+    "pulse",
+    sl.Skeleton(sl.Skeleton.effect := "pulse")
+  )
+
+  val spinner = div(
+    cls := "flex flex-row items-center justify-center",
+    sl.Spinner()
+  )
+
   val tag = div(
     cls := "flex flex-row items-center gap-2",
     sl.Tag(sl.Tag.variant := "primary", "Primary"),
@@ -352,6 +367,10 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
     range,
     span(cls := "component-heading", "Select"),
     select,
+    span(cls := "component-heading", "Spinner"),
+    spinner,
+    span(cls := "component-heading", "Skeleton"),
+    skeleton,
     span(cls := "component-heading", "Switch"),
     switch,
     span(cls := "component-heading", "Tag"),
