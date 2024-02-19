@@ -13,14 +13,13 @@ ThisBuild / startYear := Some(2024)
 ThisBuild / tlSonatypeUseLegacyHost := false
 ThisBuild / licenses := Seq(License.MIT, License.Apache2)
 
-ThisBuild / developers := List(
-  tlGitHubDev("buntec", "Christoph Bunte")
-)
+ThisBuild / developers := List(tlGitHubDev("buntec", "Christoph Bunte"))
 
 ThisBuild / tlFatalWarnings := false
 
 lazy val generateShoelace = taskKey[Unit]("generates the component definitions")
 
+lazy val ff4sVersion = "0.21.0"
 lazy val scalajsDomVersion = "2.8.0"
 lazy val circeVersion = "0.14.6"
 lazy val catsVersion = "2.10.0"
@@ -29,8 +28,7 @@ lazy val fs2Version = "3.9.4"
 lazy val kindProjectorVersion = "0.13.2"
 lazy val betterMonadicForVersion = "0.3.1"
 lazy val fs2DomVersion = "0.2.1"
-
-lazy val ff4sVersion = "0.20.0-7-1cdd98f-SNAPSHOT"
+lazy val monocleVersion = "3.2.0"
 
 lazy val root =
   tlCrossRootProject.aggregate(`ff4s-shoelace`, examples)
@@ -53,13 +51,7 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
     name := "ff4s-shoelace",
     libraryDependencies ++= Seq(
       "io.github.buntec" %%% "ff4s" % ff4sVersion,
-      "org.scala-js" %%% "scalajs-dom" % scalajsDomVersion,
-      "com.armanbilge" %%% "fs2-dom" % fs2DomVersion,
-      "org.typelevel" %%% "cats-core" % catsVersion,
-      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
-      "org.typelevel" %%% "cats-effect-kernel" % catsEffectVersion,
-      "org.typelevel" %%% "cats-effect-std" % catsEffectVersion,
-      "co.fs2" %%% "fs2-core" % fs2Version
+      "org.scala-js" %%% "scalajs-dom" % scalajsDomVersion
     )
   )
 
@@ -68,8 +60,16 @@ lazy val examples = (project in file("examples"))
   .settings(
     scalaJSUseMainModuleInitializer := true,
     libraryDependencies ++= Seq(
-      "dev.optics" %%% "monocle-core" % "3.2.0",
-      "dev.optics" %%% "monocle-macro" % "3.2.0"
+      "io.github.buntec" %%% "ff4s" % ff4sVersion,
+      "org.scala-js" %%% "scalajs-dom" % scalajsDomVersion,
+      "com.armanbilge" %%% "fs2-dom" % fs2DomVersion,
+      "org.typelevel" %%% "cats-core" % catsVersion,
+      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
+      "org.typelevel" %%% "cats-effect-kernel" % catsEffectVersion,
+      "org.typelevel" %%% "cats-effect-std" % catsEffectVersion,
+      "co.fs2" %%% "fs2-core" % fs2Version,
+      "dev.optics" %%% "monocle-core" % monocleVersion,
+      "dev.optics" %%% "monocle-macro" % monocleVersion
     )
   )
   .dependsOn(`ff4s-shoelace`)
