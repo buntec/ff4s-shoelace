@@ -61,6 +61,10 @@ object Carousel extends WebComponent {
 
   // -- Props --
 
+  lazy val scrolling: HtmlProp[Boolean, _] = boolProp("scrolling")
+
+  lazy val dragging: HtmlProp[Boolean, _] = boolProp("dragging")
+
 
   // -- Slots --
 
@@ -148,5 +152,9 @@ object Carousel extends WebComponent {
     var mouseDragging: Boolean
 
     val activeSlide: Int
+
+    var scrolling: Boolean
+
+    var dragging: Boolean
   }
 }
