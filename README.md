@@ -5,4 +5,8 @@ Experimental [ff4s](https://github.com/buntec/ff4s) bindings for the wonderful [
 This is a minor adaptation of [laminar-shoelace-components](https://github.com/raquo/laminar-shoelace-components).
 All credit is due to the amazing @raquo.
 
-*Work in progress - no artifacts are published yet.*
+No releases yet but you can try out a snapshot:
+
+```
+Global / resolvers += "Sonatype S01 OSS Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots"
+```
