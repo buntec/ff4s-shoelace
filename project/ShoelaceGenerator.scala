@@ -407,7 +407,7 @@ class ShoelaceGenerator(
     line()
     if (element.slots.isEmpty) {
       line("/** This component has no slots - don't give it any children. */")
-      line("@inline def noSlots: Unit = ()")
+      line("@inline def noSlots(): Unit = ()")
     } else {
       enter("object slots {", "}") {
         element.slots.map { slot =>
@@ -460,7 +460,7 @@ class ShoelaceGenerator(
     line()
     if (element.cssParts.isEmpty) {
       line("/** This component has no CSS parts. */")
-      line("@inline def noCssParts: Unit = ()")
+      line("@inline def noCssParts(): Unit = ()")
     } else {
       line(
         "/** For documentation only. You need to style these from a CSS stylesheet. */"

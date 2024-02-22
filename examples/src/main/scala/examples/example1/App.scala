@@ -30,47 +30,9 @@ object Action {
 
 }
 
-class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
+trait View { dsl: ff4s.Dsl[State, Action] =>
 
-  override val store = for {
-
-    store <- ff4s.Store[F, State, Action](State())(_ =>
-      _ match {
-        case Action.ModifyState(f) => state => f(state) -> none
-      }
-    )
-
-    _ <- Stream
-      .fixedDelay(100.millis)
-      .zipWithIndex
-      .map(_._2)
-      .evalMap(i =>
-        store.dispatch(Action.ModifyState(_.copy(progress = i.toInt % 100)))
-      )
-      .compile
-      .drain
-      .background
-
-    _ <- store.state
-      .map(_.darkMode)
-      .discrete
-      .changes
-      .evalMap(darkMode =>
-        if (darkMode) {
-          F.delay(dom.document.body.className = "dark sl-theme-dark")
-        } else {
-          F.delay(dom.document.body.className = "")
-        }
-      )
-      .compile
-      .drain
-      .background
-
-  } yield store
-
-  import dsl._
-  import dsl.html._
-
+  import html._
   import ff4s.{shoelace => sl}
 
   val darkMode = useState(state =>
@@ -335,7 +297,7 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
     sl.Button("hover me")
   )
 
-  override val view = div(
+  val view = div(
     idAttr := "page",
     darkMode,
     span(cls := "heading", "Shoelace components"),
@@ -378,5 +340,47 @@ class App[F[_]](implicit val F: Async[F]) extends ff4s.App[F, State, Action] {
     span(cls := "component-heading", "Tooltip"),
     tooltip
   )
+
+}
+
+class App[F[_]](implicit val F: Async[F])
+    extends ff4s.App[F, State, Action]
+    with View {
+
+  override val store = for {
+
+    store <- ff4s.Store[F, State, Action](State())(_ =>
+      _ match {
+        case Action.ModifyState(f) => state => f(state) -> none
+      }
+    )
+
+    _ <- Stream
+      .fixedDelay(100.millis)
+      .zipWithIndex
+      .map(_._2)
+      .evalMap(i =>
+        store.dispatch(Action.ModifyState(_.copy(progress = i.toInt % 100)))
+      )
+      .compile
+      .drain
+      .background
+
+    _ <- store.state
+      .map(_.darkMode)
+      .discrete
+      .changes
+      .evalMap(darkMode =>
+        if (darkMode) {
+          F.delay(dom.document.body.className = "dark sl-theme-dark")
+        } else {
+          F.delay(dom.document.body.className = "")
+        }
+      )
+      .compile
+      .drain
+      .background
+
+  } yield store
 
 }

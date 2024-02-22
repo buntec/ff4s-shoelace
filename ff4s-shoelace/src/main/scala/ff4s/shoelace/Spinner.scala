@@ -35,7 +35,7 @@ object Spinner extends WebComponent {
   // -- Slots --
 
   /** This component has no slots - don't give it any children. */
-  @inline def noSlots: Unit = ()
+  @inline def noSlots(): Unit = ()
 
 
 

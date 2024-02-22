@@ -46,5 +46,5 @@ object VisuallyHidden extends WebComponent {
   // -- CSS Parts --
 
   /** This component has no CSS parts. */
-  @inline def noCssParts: Unit = ()
+  @inline def noCssParts(): Unit = ()
 }
