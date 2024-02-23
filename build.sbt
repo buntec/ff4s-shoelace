@@ -22,7 +22,7 @@ ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("11"))
 
 lazy val generateShoelace = taskKey[Unit]("generates the component definitions")
 
-lazy val ff4sVersion = "0.22-2b55c7f-SNAPSHOT"
+lazy val ff4sVersion = "0.23.0"
 lazy val scalajsDomVersion = "2.8.0"
 lazy val circeVersion = "0.14.6"
 lazy val catsVersion = "2.10.0"
@@ -48,10 +48,6 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
         baseOutputDirectoryPath = "ff4s-shoelace/src/main/scala/ff4s/shoelace",
         baseOutputPackagePath = "ff4s.shoelace"
       ).generate()
-    },
-    Compile / compile := {
-      generateShoelace.value
-      (Compile / compile).value
     }
   )
   .settings(
