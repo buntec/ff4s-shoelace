@@ -1,7 +1,7 @@
-import sbt._
+import sbt.*
 import laika.ast.LengthUnit
 import laika.ast.Styles
-import laika.theme.config._
+import laika.theme.config.*
 import laika.helium.Helium
 import laika.helium.config.IconLink
 import laika.helium.config.HeliumIcon
@@ -9,7 +9,7 @@ import laika.helium.config.ColorQuintet
 import laika.helium.config.AnchorPlacement
 import laika.helium.Helium
 
-import LengthUnit._
+import LengthUnit.*
 import laika.helium.config.ThemeNavigationSection
 import laika.helium.config.TextLink
 import cats.data.NonEmptyList

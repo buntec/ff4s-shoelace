@@ -62,7 +62,6 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
 lazy val examples = (project in file("examples"))
   .enablePlugins(ScalaJSPlugin, NoPublishPlugin)
   .settings(
-    crossScalaVersions := Seq(scala3),
     scalaJSUseMainModuleInitializer := true,
     libraryDependencies ++= Seq(
       "io.github.buntec" %%% "ff4s" % ff4sVersion,

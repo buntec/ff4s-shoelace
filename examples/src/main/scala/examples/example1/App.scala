@@ -1,8 +1,8 @@
 package examples.example1
 
 import cats.effect.Async
-import cats.effect.implicits._
-import cats.syntax.all._
+import cats.effect.implicits.*
+import cats.syntax.all.*
 import fs2.Stream
 import org.scalajs.dom
 
@@ -32,8 +32,8 @@ object Action {
 
 trait View { dsl: ff4s.Dsl[State, Action] =>
 
-  import html._
-  import ff4s.{shoelace => sl}
+  import html.*
+  import ff4s.{shoelace as sl}
 
   val darkMode = useState(state =>
     div(
@@ -240,7 +240,7 @@ trait View { dsl: ff4s.Dsl[State, Action] =>
         sl.Option(sl.Option.value := "option-4", "Option 4"),
         sl.Option(sl.Option.value := "option-5", "Option 5"),
         sl.Option(sl.Option.value := "option-6", "Option 6"),
-        sl.Select.value := (js.Array(state.multiSelectValue: _*)),
+        sl.Select.value := (js.Array(state.multiSelectValue*)),
         sl.Select.onChange := (ev =>
           Action
             .ModifyState(

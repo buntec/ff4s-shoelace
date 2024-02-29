@@ -1,4 +1,4 @@
-import upickle.default._
+import upickle.default.*
 
 case class CustomElementsManifest(
     schemaVersion: String, // "1.0.0"

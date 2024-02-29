@@ -1,6 +1,6 @@
 package ff4s
 
-import ff4s.codecs._
+import ff4s.codecs.*
 
 import scalajs.js
 
