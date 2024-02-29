@@ -4,8 +4,9 @@ Global / resolvers += "Sonatype S01 OSS Snapshots" at "https://s01.oss.sonatype.
 ThisBuild / tlBaseVersion := "0.0"
 
 lazy val scala213 = "2.13.12"
-ThisBuild / scalaVersion := scala213
-ThisBuild / crossScalaVersions := Seq(scala213, "3.3.1")
+lazy val scala3 = "3.3.1"
+ThisBuild / scalaVersion := scala3
+ThisBuild / crossScalaVersions := Seq(scala213, scala3)
 
 ThisBuild / organization := "io.github.buntec"
 ThisBuild / organizationName := "buntec"
@@ -22,7 +23,7 @@ ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("11"))
 
 lazy val generateShoelace = taskKey[Unit]("generates the component definitions")
 
-lazy val ff4sVersion = "0.23.0"
+lazy val ff4sVersion = "0.24.0"
 lazy val scalajsDomVersion = "2.8.0"
 lazy val circeVersion = "0.14.6"
 lazy val catsVersion = "2.10.0"
@@ -61,6 +62,7 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
 lazy val examples = (project in file("examples"))
   .enablePlugins(ScalaJSPlugin, NoPublishPlugin)
   .settings(
+    crossScalaVersions := Seq(scala3),
     scalaJSUseMainModuleInitializer := true,
     libraryDependencies ++= Seq(
       "io.github.buntec" %%% "ff4s" % ff4sVersion,

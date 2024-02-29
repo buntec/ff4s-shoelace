@@ -349,11 +349,9 @@ class App[F[_]](implicit val F: Async[F])
 
   override val store = for {
 
-    store <- ff4s.Store[F, State, Action](State())(_ =>
-      _ match {
-        case Action.ModifyState(f) => state => f(state) -> none
-      }
-    )
+    store <- ff4s.Store.pure[F, State, Action](State()) {
+      case (Action.ModifyState(f), state) => f(state)
+    }
 
     _ <- Stream
       .fixedDelay(100.millis)
