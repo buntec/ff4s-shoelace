@@ -2,7 +2,7 @@ package ff4s.shoelace
 
 // format: off
 
-import ff4s._
+import ff4s.*
 import ff4s.shoelace.EventTypes.*
 import org.scalajs.dom
 
