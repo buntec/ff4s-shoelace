@@ -3,15 +3,14 @@ Global / resolvers += "Sonatype S01 OSS Snapshots" at "https://s01.oss.sonatype.
 
 ThisBuild / tlBaseVersion := "0.0"
 
-lazy val scala213 = "2.13.12"
-lazy val scala3 = "3.3.1"
+lazy val scala213 = "2.13.17"
+lazy val scala3 = "3.7.3"
 ThisBuild / scalaVersion := scala3
 ThisBuild / crossScalaVersions := Seq(scala213, scala3)
 
 ThisBuild / organization := "io.github.buntec"
 ThisBuild / organizationName := "buntec"
 ThisBuild / startYear := Some(2024)
-ThisBuild / tlSonatypeUseLegacyHost := false
 ThisBuild / licenses := Seq(License.MIT, License.Apache2)
 ThisBuild / tlCiHeaderCheck := false
 ThisBuild / tlCiDependencyGraphJob := false
@@ -23,16 +22,16 @@ ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("11"))
 
 lazy val generateShoelace = taskKey[Unit]("generates the component definitions")
 
-lazy val ff4sVersion = "0.24.0"
-lazy val scalajsDomVersion = "2.8.0"
-lazy val circeVersion = "0.14.6"
-lazy val catsVersion = "2.10.0"
-lazy val catsEffectVersion = "3.5.3"
-lazy val fs2Version = "3.9.4"
-lazy val kindProjectorVersion = "0.13.2"
+lazy val ff4sVersion = "0.26.1"
+lazy val scalajsDomVersion = "2.8.1"
+lazy val circeVersion = "0.14.15"
+lazy val catsVersion = "2.13.0"
+lazy val catsEffectVersion = "3.6.3"
+lazy val fs2Version = "3.12.2"
+lazy val kindProjectorVersion = "0.13.4"
 lazy val betterMonadicForVersion = "0.3.1"
 lazy val fs2DomVersion = "0.2.1"
-lazy val monocleVersion = "3.2.0"
+lazy val monocleVersion = "3.3.0"
 
 lazy val root =
   tlCrossRootProject.aggregate(`ff4s-shoelace`, examples)
