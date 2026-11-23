@@ -13,24 +13,24 @@ import scala.scalajs.js.|
 
 /**
   * Copies text data to the clipboard when the user clicks the trigger.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/CopyButton.scala CopyButton.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/CopyButton.scala CopyButton.scala source code]]
+  *
   * [[https://shoelace.style/components/copy Shoelace CopyButton docs]]
   */
 object CopyButton extends WebComponent {
   override val tagName: String = "sl-copy-button"
 
-  type Ref = CopyButtonComponent with dom.HTMLElement
+  type Ref = CopyButtonComponent & dom.HTMLElement
 
 
   // -- Events --
 
   /** Emitted when the data has been copied. */
-  lazy val onCopy: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[CopyEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[CopyEvent]]("sl-copy")
+  lazy val onCopy: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[CopyEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[CopyEvent]]("sl-copy")
 
   /** Emitted when the data could not be copied. */
-  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]]("sl-error")
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --
@@ -74,10 +74,10 @@ object CopyButton extends WebComponent {
 
   // -- Props --
 
-  lazy val status: HtmlProp[String, _] = stringProp("status")
+  lazy val status: HtmlProp[String, ?] = stringProp("status")
 
   /** The text value to copy. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -128,9 +128,9 @@ object CopyButton extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait CopyButtonComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait CopyButtonComponent extends js.Object { this: dom.HTMLElement =>
 
     val isCopying: Boolean
 

@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Split panels display two adjacent panels, allowing the user to reposition them.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/SplitPanel.scala SplitPanel.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/SplitPanel.scala SplitPanel.scala source code]]
+  *
   * [[https://shoelace.style/components/split-panel Shoelace SplitPanel docs]]
   */
 object SplitPanel extends WebComponent {
   override val tagName: String = "sl-split-panel"
 
-  type Ref = SplitPanelComponent with dom.HTMLElement
+  type Ref = SplitPanelComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -54,8 +54,8 @@ object SplitPanel extends WebComponent {
   lazy val primary: HtmlAttr[String] = stringAttr("primary")
 
   /**
-    * One or more space-separated values at which the divider should snap. Values can be in pixels or percentages, e.g.
-    * `"100px 50%"`.
+    * Either one or more space-separated values at which the divider should snap, in pixels, percentages, or repeat expressions e.g. `'100px 50% 500px' or `repeat(50%) 10px`,
+    * or a function which takes in a `SnapFunctionParams`, and returns a position to snap to, e.g. `({ pos }) => Math.round(pos / 8) * 8`.
     */
   lazy val snap: HtmlAttr[String] = stringAttr("snap")
 
@@ -102,9 +102,9 @@ object SplitPanel extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait SplitPanelComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait SplitPanelComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * The current position of the divider from the primary panel's edge as a percentage 0-100. Defaults to 50% of the
@@ -129,10 +129,10 @@ object SplitPanel extends WebComponent {
     var primary: String | Unit
 
     /**
-      * One or more space-separated values at which the divider should snap. Values can be in pixels or percentages, e.g.
-      * `"100px 50%"`.
+      * Either one or more space-separated values at which the divider should snap, in pixels, percentages, or repeat expressions e.g. `'100px 50% 500px' or `repeat(50%) 10px`,
+      * or a function which takes in a `SnapFunctionParams`, and returns a position to snap to, e.g. `({ pos }) => Math.round(pos / 8) * 8`.
       */
-    var snap: String | Unit
+    var snap: String | js.Function1[js.Object, Double]
 
     /** How close the divider must be to a snap point until snapping occurs. */
     var snapThreshold: Int

@@ -13,15 +13,15 @@ import scala.scalajs.js.|
 
 /**
   * A component for displaying animated GIFs and WEBPs that play and pause on interaction.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/AnimatedImage.scala AnimatedImage.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/AnimatedImage.scala AnimatedImage.scala source code]]
+  *
   * [[https://shoelace.style/components/animated-image Shoelace AnimatedImage docs]]
   */
 object AnimatedImage extends WebComponent {
   override val tagName: String = "sl-animated-image"
 
-  type Ref = AnimatedImageComponent with dom.HTMLElement
+  type Ref = AnimatedImageComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -30,7 +30,7 @@ object AnimatedImage extends WebComponent {
   lazy val onLoad: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-load")
 
   /** Emitted when the image fails to load. */
-  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]]("sl-error")
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --
@@ -72,9 +72,9 @@ object AnimatedImage extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait AnimatedImageComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait AnimatedImageComponent extends js.Object { this: dom.HTMLElement =>
 
     val frozenFrame: String
 

@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/TreeItem.scala TreeItem.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/TreeItem.scala TreeItem.scala source code]]
+  *
   * [[https://shoelace.style/components/tree-item Shoelace TreeItem docs]]
   */
 object TreeItem extends WebComponent {
   override val tagName: String = "sl-tree-item"
 
-  type Ref = TreeItemComponent with dom.HTMLElement
+  type Ref = TreeItemComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -108,6 +108,12 @@ object TreeItem extends WebComponent {
     /** The container that wraps the tree item's expand button and spinner. */
     lazy val expandButton: String = "expand-button"
 
+    /** The spinner that shows when a lazy tree item is in the loading state. */
+    lazy val spinner: String = "spinner"
+
+    /** The spinner's base part. */
+    lazy val spinner__base: String = "spinner__base"
+
     /** The tree item's label. */
     lazy val label: String = "label"
 
@@ -140,9 +146,9 @@ object TreeItem extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait TreeItemComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait TreeItemComponent extends js.Object { this: dom.HTMLElement =>
 
     val indeterminate: Boolean
 

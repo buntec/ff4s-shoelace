@@ -12,9 +12,9 @@ import scala.scalajs.js.|
 
 /**
   * Menu labels are used to describe a group of menu items.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/MenuLabel.scala MenuLabel.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/MenuLabel.scala MenuLabel.scala source code]]
+  *
   * [[https://shoelace.style/components/menu-label Shoelace MenuLabel docs]]
   */
 object MenuLabel extends WebComponent {

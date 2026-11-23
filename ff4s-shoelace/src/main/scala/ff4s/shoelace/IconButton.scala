@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Icons buttons are simple, icon-only buttons that can be used for actions and in toolbars.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/IconButton.scala IconButton.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/IconButton.scala IconButton.scala source code]]
+  *
   * [[https://shoelace.style/components/icon-button Shoelace IconButton docs]]
   */
 object IconButton extends WebComponent {
   override val tagName: String = "sl-icon-button"
 
-  type Ref = IconButtonComponent with dom.HTMLElement
+  type Ref = IconButtonComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -86,9 +86,9 @@ object IconButton extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait IconButtonComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait IconButtonComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The name of the icon to draw. Available names depend on the icon library being used. */
     var name: String | Unit

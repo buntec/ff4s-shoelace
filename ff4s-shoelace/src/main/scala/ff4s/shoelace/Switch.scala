@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Switches allow the user to toggle an option on or off.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Switch.scala Switch.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Switch.scala Switch.scala source code]]
+  *
   * [[https://shoelace.style/components/switch Shoelace Switch docs]]
   */
 object Switch extends WebComponent {
   override val tagName: String = "sl-switch"
 
-  type Ref = SwitchComponent with dom.HTMLElement
+  type Ref = SwitchComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -77,10 +77,10 @@ object Switch extends WebComponent {
   // -- Props --
 
   /** The current value of the switch, submitted as a name/value pair with form data. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
   /** Draws the switch in a checked state. */
-  lazy val checked: HtmlProp[Boolean, _] = boolProp("checked")
+  lazy val checked: HtmlProp[Boolean, ?] = boolProp("checked")
 
 
   // -- Slots --
@@ -119,9 +119,9 @@ object Switch extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait SwitchComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait SwitchComponent extends js.Object { this: dom.HTMLElement =>
 
     var title: String
 

@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Animate elements declaratively with nearly 100 baked-in presets, or roll your own with custom keyframes. Powered by the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Animation.scala Animation.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Animation.scala Animation.scala source code]]
+  *
   * [[https://shoelace.style/components/animation Shoelace Animation docs]]
   */
 object Animation extends WebComponent {
   override val tagName: String = "sl-animation"
 
-  type Ref = AnimationComponent with dom.HTMLElement
+  type Ref = AnimationComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -87,10 +87,10 @@ object Animation extends WebComponent {
   // -- Props --
 
   /** The keyframes to use for the animation. If this is set, `name` will be ignored. */
-  lazy val keyframes: HtmlProp[js.Array[js.Object], _] = asIsProp("keyframes")
+  lazy val keyframes: HtmlProp[js.Array[js.Object], ?] = asIsProp("keyframes")
 
   /** Gets and sets the current animation time. */
-  lazy val currentTime: HtmlProp[Int, _] = intProp("currentTime")
+  lazy val currentTime: HtmlProp[Int, ?] = intProp("currentTime")
 
 
   // -- Slots --
@@ -110,9 +110,9 @@ object Animation extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait AnimationComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait AnimationComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The name of the built-in animation to use. For custom animations, use the `keyframes` prop. */
     var name: String

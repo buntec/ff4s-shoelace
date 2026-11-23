@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Ranges allow the user to select a single value within a given range using a slider.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Range.scala Range.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Range.scala Range.scala source code]]
+  *
   * [[https://shoelace.style/components/range Shoelace Range docs]]
   */
 object Range extends WebComponent {
   override val tagName: String = "sl-range"
 
-  type Ref = RangeComponent with dom.HTMLElement
+  type Ref = RangeComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -83,7 +83,7 @@ object Range extends WebComponent {
   // -- Props --
 
   /** The current value of the range, submitted as a name/value pair with form data. */
-  lazy val value: HtmlProp[Int, _] = intProp("value")
+  lazy val value: HtmlProp[Int, ?] = intProp("value")
 
 
   // -- Slots --
@@ -128,9 +128,9 @@ object Range extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait RangeComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait RangeComponent extends js.Object { this: dom.HTMLElement =>
 
     var title: String
 

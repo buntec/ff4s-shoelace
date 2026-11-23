@@ -12,9 +12,9 @@ import scala.scalajs.js.|
 
 /**
   * Cards can be used to group related subjects in a container.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Card.scala Card.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Card.scala Card.scala source code]]
+  *
   * [[https://shoelace.style/components/card Shoelace Card docs]]
   */
 object Card extends WebComponent {

@@ -13,21 +13,21 @@ import scala.scalajs.js.|
 
 /**
   * The Resize Observer component offers a thin, declarative interface to the [`ResizeObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/ResizeObserver.scala ResizeObserver.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/ResizeObserver.scala ResizeObserver.scala source code]]
+  *
   * [[https://shoelace.style/components/resize-observer Shoelace ResizeObserver docs]]
   */
 object ResizeObserver extends WebComponent {
   override val tagName: String = "sl-resize-observer"
 
-  type Ref = ResizeObserverComponent with dom.HTMLElement
+  type Ref = ResizeObserverComponent & dom.HTMLElement
 
 
   // -- Events --
 
   /** Emitted when the element is resized. */
-  lazy val onResize: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ResizeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ResizeEvent]]("sl-resize")
+  lazy val onResize: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ResizeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ResizeEvent]]("sl-resize")
 
 
   // -- Attributes --
@@ -56,9 +56,9 @@ object ResizeObserver extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait ResizeObserverComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait ResizeObserverComponent extends js.Object { this: dom.HTMLElement =>
 
     /** Disables the observer. */
     var disabled: Boolean

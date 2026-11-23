@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Alerts are used to display important messages inline or as toast notifications.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Alert.scala Alert.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Alert.scala Alert.scala source code]]
+  *
   * [[https://shoelace.style/components/alert Shoelace Alert docs]]
   */
 object Alert extends WebComponent {
   override val tagName: String = "sl-alert"
 
-  type Ref = AlertComponent with dom.HTMLElement
+  type Ref = AlertComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -58,6 +58,12 @@ object Alert extends WebComponent {
     * the alert will not close on its own.
     */
   lazy val duration: HtmlAttr[Int] = intAttr("duration")
+
+  /**
+    * Enables a countdown that indicates the remaining time the alert will be displayed.
+    * Typically used to indicate the remaining time before a whole app refresh.
+    */
+  lazy val countdown: HtmlAttr[String] = stringAttr("countdown")
 
 
   // -- Props --
@@ -99,9 +105,9 @@ object Alert extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait AlertComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait AlertComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can
@@ -121,5 +127,11 @@ object Alert extends WebComponent {
       * the alert will not close on its own.
       */
     var duration: Int
+
+    /**
+      * Enables a countdown that indicates the remaining time the alert will be displayed.
+      * Typically used to indicate the remaining time before a whole app refresh.
+      */
+    var countdown: String | Unit
   }
 }

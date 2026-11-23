@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Breadcrumb Items are used inside [breadcrumbs](/components/breadcrumb) to represent different links.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/BreadcrumbItem.scala BreadcrumbItem.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/BreadcrumbItem.scala BreadcrumbItem.scala source code]]
+  *
   * [[https://shoelace.style/components/breadcrumb-item Shoelace BreadcrumbItem docs]]
   */
 object BreadcrumbItem extends WebComponent {
   override val tagName: String = "sl-breadcrumb-item"
 
-  type Ref = BreadcrumbItemComponent with dom.HTMLElement
+  type Ref = BreadcrumbItemComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -86,9 +86,9 @@ object BreadcrumbItem extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait BreadcrumbItemComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait BreadcrumbItemComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * Optional URL to direct the user to when the breadcrumb item is activated. When set, a link will be rendered

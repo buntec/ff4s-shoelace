@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Compare visual differences between similar photos with a sliding panel.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/ImageComparer.scala ImageComparer.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/ImageComparer.scala ImageComparer.scala source code]]
+  *
   * [[https://shoelace.style/components/image-comparer Shoelace ImageComparer docs]]
   */
 object ImageComparer extends WebComponent {
   override val tagName: String = "sl-image-comparer"
 
-  type Ref = ImageComparerComponent with dom.HTMLElement
+  type Ref = ImageComparerComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -77,9 +77,9 @@ object ImageComparer extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait ImageComparerComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait ImageComparerComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The position of the divider as a percentage. */
     var position: Int

@@ -19,16 +19,19 @@ object CustomElementsManifest {
       kind: String, // "class"
       name: String, // e.g. "SlAnimatedImage"
       description: String = "",
-      summary: String,
-      tagNameWithoutPrefix: String, // e.g. "animated-image"
-      tagName: String, // e.g. "sl-animated-image"
-      customElement: Boolean,
-      superclass: Superclass,
-      jsDoc: String,
+      // The fields below are only present on custom element class
+      // declarations; modules may also declare e.g. functions (`SNAP_NONE`
+      // in split-panel since Shoelace 2.15).
+      summary: String = "",
+      tagNameWithoutPrefix: String = "", // e.g. "animated-image"
+      tagName: String = "", // e.g. "sl-animated-image"
+      customElement: Boolean = false,
+      superclass: Superclass = Superclass("", ""),
+      jsDoc: String = "",
       documentation: String =
         "", // e.g. "https://shoelace.style/components/animated-image"
-      status: String, // e.g. "stable"
-      since: String, // e.g. "2.0"
+      status: String = "", // e.g. "stable"
+      since: String = "", // e.g. "2.0"
       cssProperties: List[CssProperty] = Nil,
       cssParts: List[CssPart] = Nil,
       slots: List[Slot] = Nil,

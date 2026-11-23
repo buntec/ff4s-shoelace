@@ -13,15 +13,15 @@ import scala.scalajs.js.|
 
 /**
   * Icons are symbols that can be used to represent various options within an application.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Icon.scala Icon.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Icon.scala Icon.scala source code]]
+  *
   * [[https://shoelace.style/components/icon Shoelace Icon docs]]
   */
 object Icon extends WebComponent {
   override val tagName: String = "sl-icon"
 
-  type Ref = IconComponent with dom.HTMLElement
+  type Ref = IconComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -30,7 +30,7 @@ object Icon extends WebComponent {
   lazy val onLoad: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-load")
 
   /** Emitted when the icon fails to load due to an error. When using `spriteSheet: true` this will not emit. */
-  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]]("sl-error")
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --
@@ -78,9 +78,9 @@ object Icon extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait IconComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait IconComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The name of the icon to draw. Available names depend on the icon library being used. */
     var name: String | Unit

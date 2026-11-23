@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Badges are used to draw attention and display statuses or counts.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Badge.scala Badge.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Badge.scala Badge.scala source code]]
+  *
   * [[https://shoelace.style/components/badge Shoelace Badge docs]]
   */
 object Badge extends WebComponent {
   override val tagName: String = "sl-badge"
 
-  type Ref = BadgeComponent with dom.HTMLElement
+  type Ref = BadgeComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -62,9 +62,9 @@ object Badge extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait BadgeComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait BadgeComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The badge's theme variant. */
     var variant: String

@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Inputs collect data from the user.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Input.scala Input.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Input.scala Input.scala source code]]
+  *
   * [[https://shoelace.style/components/input Shoelace Input docs]]
   */
 object Input extends WebComponent {
   override val tagName: String = "sl-input"
 
-  type Ref = InputComponent with dom.HTMLInputElement
+  type Ref = InputComponent & dom.HTMLInputElement
 
 
   // -- Events --
@@ -162,7 +162,7 @@ object Input extends WebComponent {
   // -- Props --
 
   /** The current value of the input, submitted as a name/value pair with form data. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -231,9 +231,9 @@ object Input extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait InputComponent extends js.Object { this: dom.HTMLInputElement => 
+  @js.native trait InputComponent extends js.Object { this: dom.HTMLInputElement =>
 
     var title: String
 

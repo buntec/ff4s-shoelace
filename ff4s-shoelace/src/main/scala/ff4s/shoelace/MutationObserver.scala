@@ -13,21 +13,21 @@ import scala.scalajs.js.|
 
 /**
   * The Mutation Observer component offers a thin, declarative interface to the [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/MutationObserver.scala MutationObserver.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/MutationObserver.scala MutationObserver.scala source code]]
+  *
   * [[https://shoelace.style/components/mutation-observer Shoelace MutationObserver docs]]
   */
 object MutationObserver extends WebComponent {
   override val tagName: String = "sl-mutation-observer"
 
-  type Ref = MutationObserverComponent with dom.HTMLElement
+  type Ref = MutationObserverComponent & dom.HTMLElement
 
 
   // -- Events --
 
   /** Emitted when a mutation occurs. */
-  lazy val onMutation: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[MutationEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[MutationEvent]]("sl-mutation")
+  lazy val onMutation: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[MutationEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[MutationEvent]]("sl-mutation")
 
 
   // -- Attributes --
@@ -74,9 +74,9 @@ object MutationObserver extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait MutationObserverComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait MutationObserverComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * Watches for changes to attributes. To watch only specific attributes, separate them by a space, e.g.

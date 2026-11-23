@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Progress rings are used to show the progress of a determinate operation in a circular fashion.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/ProgressRing.scala ProgressRing.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/ProgressRing.scala ProgressRing.scala source code]]
+  *
   * [[https://shoelace.style/components/progress-ring Shoelace ProgressRing docs]]
   */
 object ProgressRing extends WebComponent {
   override val tagName: String = "sl-progress-ring"
 
-  type Ref = ProgressRingComponent with dom.HTMLElement
+  type Ref = ProgressRingComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -38,7 +38,7 @@ object ProgressRing extends WebComponent {
   // -- Props --
 
   /** The current progress as a percentage, 0 to 100. */
-  lazy val value: HtmlProp[Int, _] = intProp("value")
+  lazy val value: HtmlProp[Int, ?] = intProp("value")
 
 
   // -- Slots --
@@ -65,9 +65,9 @@ object ProgressRing extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait ProgressRingComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait ProgressRingComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The current progress as a percentage, 0 to 100. */
     var value: Int

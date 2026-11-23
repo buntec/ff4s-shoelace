@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Formats a number as a human readable bytes value.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/FormatBytes.scala FormatBytes.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/FormatBytes.scala FormatBytes.scala source code]]
+  *
   * [[https://shoelace.style/components/format-bytes Shoelace FormatBytes docs]]
   */
 object FormatBytes extends WebComponent {
   override val tagName: String = "sl-format-bytes"
 
-  type Ref = FormatBytesComponent with dom.HTMLElement
+  type Ref = FormatBytesComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -41,7 +41,7 @@ object FormatBytes extends WebComponent {
   // -- Props --
 
   /** The number to format in bytes. */
-  lazy val value: HtmlProp[Int, _] = intProp("value")
+  lazy val value: HtmlProp[Int, ?] = intProp("value")
 
 
   // -- Slots --
@@ -58,9 +58,9 @@ object FormatBytes extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait FormatBytesComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait FormatBytesComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The number to format in bytes. */
     var value: Int

@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Popup is a utility that lets you declaratively anchor "popup" containers to another element.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Popup.scala Popup.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Popup.scala Popup.scala source code]]
+  *
   * [[https://shoelace.style/components/popup Shoelace Popup docs]]
   */
 object Popup extends WebComponent {
   override val tagName: String = "sl-popup"
 
-  type Ref = PopupComponent with dom.HTMLElement
+  type Ref = PopupComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -155,9 +155,9 @@ object Popup extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait PopupComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait PopupComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * Activates the positioning logic and shows the popup. When this attribute is removed, the positioning logic is torn

@@ -33,7 +33,7 @@ object Action {
 trait View { dsl: ff4s.Dsl[State, Action] =>
 
   import html.*
-  import ff4s.{shoelace as sl}
+  import ff4s.shoelace as sl
 
   val darkMode = useState(state =>
     div(

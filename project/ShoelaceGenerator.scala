@@ -42,8 +42,7 @@ class ShoelaceGenerator(
 
   lazy val baseDomEventType: String = "Event"
 
-  /** If true, we'll import scala.scalajs.js.| - this is needed to support Scala
-    * 2.
+  /** If true, we'll import scala.scalajs.js.| - this is needed to support Scala 2.
     */
   lazy val useScalaJsUnionType: Boolean = true
 
@@ -61,7 +60,7 @@ class ShoelaceGenerator(
       case "Boolean" => "boolAttr"
       case "String"  => "stringAttr"
       case "Int"     => "intAttr"
-      case _ =>
+      case _         =>
         println(
           s"ATTR ...No impl defined for scala type `${scalaTypeStr}`, trying `htmlAttr` for now."
         )
@@ -76,7 +75,7 @@ class ShoelaceGenerator(
       case "Int"                                          => "intProp"
       case "Double"                                       => "doubleProp"
       case "dom.MutationObserver" | "js.Array[js.Object]" => "asIsProp"
-      case _ =>
+      case _                                              =>
         println(
           s"PROP ...No impl defined for scala type `${scalaTypeStr}`, trying `asIsProp` for now."
         )
@@ -87,13 +86,13 @@ class ShoelaceGenerator(
   def cssPropType(cssType: Def.CssType): String = {
     cssType match {
       case WebComponentsDef.CssLengthType =>
-        "StyleProp[String] with u.Length[DSP, Int]"
+        "StyleProp[String] & u.Length[DSP, Int]"
       case WebComponentsDef.CssColorType =>
-        "StyleProp[String] with u.Color[SS, DSP]"
+        "StyleProp[String] & u.Color[SS, DSP]"
       case WebComponentsDef.CssNumberType =>
         "StyleProp[Int]" // #nc not sure if it should be int or double...
-      case WebComponentsDef.CssTimeType => "StyleProp[String] with u.Time[DSP]"
-      case WebComponentsDef.CssLineType => "StyleProp[String] with s.Line"
+      case WebComponentsDef.CssTimeType => "StyleProp[String] & u.Time[DSP]"
+      case WebComponentsDef.CssLineType => "StyleProp[String] & s.Line"
     }
   }
 
@@ -290,7 +289,7 @@ class ShoelaceGenerator(
       if (element.cssProperties.nonEmpty) "StyleProp" else ""
     ).filter(_.nonEmpty)
 
-    line(s"import ff4s._")
+    line(s"import ff4s.*")
 
     // line("import com.raquo.utils.JSImportSideEffect")
     if (customEventTypes.nonEmpty) {
@@ -324,7 +323,7 @@ class ShoelaceGenerator(
   ): Unit = {
     if (showRawComponent) {
       line()
-      line(s"type Ref = ${componentTraitName} with ${elementBaseType}")
+      line(s"type Ref = ${componentTraitName} & ${elementBaseType}")
     } else {
       line()
       line(s"type Ref = ${elementBaseType}")
@@ -352,7 +351,7 @@ class ShoelaceGenerator(
       val eventType = customEventTypeDef
         .map(_.scalaName)
         .fold(st.baseEventType)(cet =>
-          s"${st.baseEventType} with HasDetail[${cet}]"
+          s"${st.baseEventType} & HasDetail[${cet}]"
         )
       line()
       blockCommentLines(event.description)
@@ -395,7 +394,7 @@ class ShoelaceGenerator(
         s"${propImplName(scalaInputTypeStr)}(${repr(prop.propName)})"
       blockCommentLines(prop.description)
       line(
-        s"lazy val ${prop.propName}: HtmlProp[${scalaInputTypeStr}, _] = ${propImpl}"
+        s"lazy val ${prop.propName}: HtmlProp[${scalaInputTypeStr}, ?] = ${propImpl}"
       )
     }
   }

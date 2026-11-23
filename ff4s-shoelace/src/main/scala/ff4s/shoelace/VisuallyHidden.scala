@@ -12,9 +12,9 @@ import scala.scalajs.js.|
 
 /**
   * The visually hidden utility makes content accessible to assistive devices without displaying it on the screen.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/VisuallyHidden.scala VisuallyHidden.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/VisuallyHidden.scala VisuallyHidden.scala source code]]
+  *
   * [[https://shoelace.style/components/visually-hidden Shoelace VisuallyHidden docs]]
   */
 object VisuallyHidden extends WebComponent {
