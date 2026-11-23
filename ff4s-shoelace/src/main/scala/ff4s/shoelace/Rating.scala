@@ -13,15 +13,15 @@ import scala.scalajs.js.|
 
 /**
   * Ratings give users a way to quickly view and provide feedback.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Rating.scala Rating.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Rating.scala Rating.scala source code]]
+  *
   * [[https://shoelace.style/components/rating Shoelace Rating docs]]
   */
 object Rating extends WebComponent {
   override val tagName: String = "sl-rating"
 
-  type Ref = RatingComponent with dom.HTMLElement
+  type Ref = RatingComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -30,7 +30,7 @@ object Rating extends WebComponent {
   lazy val onChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-change")
 
   /** Emitted when the user hovers over a value. The `phase` property indicates when hovering starts, moves to a new value, or ends. The `value` property tells what the rating's value would be if the user were to commit to the hovered value. */
-  lazy val onHover: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[HoverEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[HoverEvent]]("sl-hover")
+  lazy val onHover: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[HoverEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[HoverEvent]]("sl-hover")
 
 
   // -- Attributes --
@@ -60,7 +60,7 @@ object Rating extends WebComponent {
   // -- Props --
 
   /** The current rating. */
-  lazy val value: HtmlProp[Int, _] = intProp("value")
+  lazy val value: HtmlProp[Int, ?] = intProp("value")
 
 
   // -- Slots --
@@ -81,9 +81,9 @@ object Rating extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait RatingComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait RatingComponent extends js.Object { this: dom.HTMLElement =>
 
     /** A label that describes the rating to assistive devices. */
     var label: String

@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Buttons represent actions that are available to the user.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Button.scala Button.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Button.scala Button.scala source code]]
+  *
   * [[https://shoelace.style/components/button Shoelace Button docs]]
   */
 object Button extends WebComponent {
   override val tagName: String = "sl-button"
 
-  type Ref = ButtonComponent with dom.HTMLElement
+  type Ref = ButtonComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -133,7 +133,7 @@ object Button extends WebComponent {
     * The value of the button, submitted as a pair with the button's name as part of the form data, but only when this
     * button is the submitter. This attribute is ignored when `href` is present.
     */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -178,9 +178,9 @@ object Button extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait ButtonComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait ButtonComponent extends js.Object { this: dom.HTMLElement =>
 
     val invalid: Boolean
 

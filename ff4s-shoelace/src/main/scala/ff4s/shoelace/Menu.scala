@@ -13,9 +13,9 @@ import scala.scalajs.js.|
 
 /**
   * Menus provide a list of options for the user to choose from.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Menu.scala Menu.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Menu.scala Menu.scala source code]]
+  *
   * [[https://shoelace.style/components/menu Shoelace Menu docs]]
   */
 object Menu extends WebComponent {
@@ -27,7 +27,7 @@ object Menu extends WebComponent {
   // -- Events --
 
   /** Emitted when a menu item is selected. */
-  lazy val onSelect: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectEvent]]("sl-select")
+  lazy val onSelect: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[SelectEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[SelectEvent]]("sl-select")
 
 
   // -- Attributes --

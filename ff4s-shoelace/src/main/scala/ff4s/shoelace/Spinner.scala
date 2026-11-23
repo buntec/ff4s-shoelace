@@ -12,9 +12,9 @@ import scala.scalajs.js.|
 
 /**
   * Spinners are used to show the progress of an indeterminate operation.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Spinner.scala Spinner.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Spinner.scala Spinner.scala source code]]
+  *
   * [[https://shoelace.style/components/spinner Shoelace Spinner docs]]
   */
 object Spinner extends WebComponent {

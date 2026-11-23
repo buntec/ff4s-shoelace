@@ -74,7 +74,7 @@ class ShoelaceTranslator(
         Some(("checked", "onInput", falseRepr)) // or onChange?
       case "sl-color-picker" => Some(("value", "onInput", emptyStringRepr))
       case "sl-input"        => Some(("value", "onInput", emptyStringRepr))
-      case "sl-radio-group" =>
+      case "sl-radio-group"  =>
         Some(("value", "onInput", emptyStringRepr)) // or onChange?
       // case "sl-range" => ??? // #TODO
       // case "sl-select" => Some(("value", "onInput", emptyStringRepr)) // or onChange? #TODO
@@ -214,10 +214,10 @@ class ShoelaceTranslator(
       jsTypes: List[Def.JsType]
   ): Boolean = {
     (tagName, propName, jsTypes) match {
-      case ("sl-animated-image", "frozenFrame", _) => true
-      case ("sl-animated-image", "isLoaded", _)    => true
-      case ("sl-carousel", "activeSlide", _)       => true
-      case ("sl-button", "invalid", _)             => true
+      case ("sl-animated-image", "frozenFrame", _)               => true
+      case ("sl-animated-image", "isLoaded", _)                  => true
+      case ("sl-carousel", "activeSlide", _)                     => true
+      case ("sl-button", "invalid", _)                           => true
       case ("sl-option", "current" | "selected" | "hasHover", _) =>
         true // #TODO check if `selected` is writable, it's not documented...
       case ("sl-copy-button", "isCopying", _)     => true
@@ -337,22 +337,18 @@ class ShoelaceTranslator(
           s"Unknown module type `${module.kind}` for module `${module.path}`."
         )
       }
-      if (module.declarations.length != 1) {
+      // Modules may export helpers next to the component class (e.g. the
+      // `SNAP_NONE` function in split-panel), so only consider the custom
+      // element declarations.
+      val customElements = module.declarations.filter { d =>
+        d.kind == "class" && d.customElement
+      }
+      if (customElements.length != 1) {
         throw new Exception(
-          s"Expected exactly one declaration in module `${module.path}`, got ${module.declarations.length}."
+          s"Expected exactly one custom element class declaration in module `${module.path}`, got ${customElements.map(_.name).mkString("[", ", ", "]")}."
         )
       }
-      val declaration = module.declarations.head
-      if (declaration.kind != "class") {
-        throw new Exception(
-          s"Expected kind=class declaration in module `${module.path}`, got `${declaration.kind}` for declaration `${declaration.name}`."
-        )
-      }
-      if (!declaration.customElement) {
-        throw new Exception(
-          s"Expected customElement=true declaration in module `${module.path}` for declaration `${declaration.name}`."
-        )
-      }
+      val declaration = customElements.head
       val props = allJsProperties(declaration)
       val attrs = attributes(declaration)
       Def.Element(
@@ -397,6 +393,15 @@ class ShoelaceTranslator(
     }
   }
 
+  /** Types for fields that the manifest declares without one, keyed by (tag
+    * name, field name).
+    */
+  val fieldTypeOverrides: Map[(String, String), String] = Map(
+    // Since Shoelace 2.15, `value` is a getter/setter pair, which the
+    // manifest analyzer emits without a type.
+    ("sl-select", "value") -> "string | string[]"
+  )
+
   def allJsProperties(elementDeclaration: M.Declaration): List[Def.Field] = {
     // val baseElementType = elementBaseType(elementDeclaration.tagName)
     elementDeclaration.members
@@ -416,7 +421,14 @@ class ShoelaceTranslator(
       //  ignoreFields.exists(_.findFirstIn(m.name).nonEmpty)
       // }
       .flatMap { m =>
-        val jsTypes = parseJsTypes(elementDeclaration.tagName, m.name, m.`type`)
+        val jsTypes = parseJsTypes(
+          elementDeclaration.tagName,
+          m.name,
+          fieldTypeOverrides
+            .get((elementDeclaration.tagName, m.name))
+            .map(M.ValueType(_))
+            .getOrElse(m.`type`)
+        )
         if (shouldIgnoreField(elementDeclaration.tagName, m.name, jsTypes)) {
           None
         } else {
@@ -484,10 +496,20 @@ class ShoelaceTranslator(
     }
   }
 
+  /** Types that an attribute's property also accepts, but which can't be
+    * expressed in the attribute itself. They don't stop the attribute from
+    * being bound as an attribute with its remaining (string) types.
+    */
+  val propertyOnlyAttrTypes: Set[Def.JsType] = Set(
+    // sl-split-panel `snap` accepts a function since Shoelace 2.15
+    Def.JsCustomType("SnapFunction")
+  )
+
   def attributes(elementDeclaration: M.Declaration): List[Def.Attribute] = {
     elementDeclaration.attributes.flatMap { attr =>
       val jsTypes =
         parseJsTypes(elementDeclaration.tagName, attr.name, attr.`type`)
+          .filterNot(propertyOnlyAttrTypes.contains)
       if (
         jsTypes.exists(t => isAttributeTypeHtmlCompatible(t).contains(false))
       ) {
@@ -627,7 +649,7 @@ class ShoelaceTranslator(
       }
       .distinct
       .filter {
-        case Def.JsUndefinedType => false
+        case Def.JsUndefinedType                => false
         case Def.JsCustomType("VirtualElement") =>
           false // I think it's always there together with `Element`?
         case _ => true
@@ -673,7 +695,7 @@ class ShoelaceTranslator(
       }
       .distinct
       .filter {
-        case Def.JsUndefinedType => false
+        case Def.JsUndefinedType                => false
         case Def.JsCustomType("VirtualElement") =>
           false // I think it's always there together with `Element`?
         case _ => true
@@ -685,9 +707,11 @@ class ShoelaceTranslator(
       )
     } else if (printableTypes.length == 1) {
       printableTypes.head match {
-        case Def.JsStringType                     => "String"
-        case Def.JsNumberType                     => "Int" // #nc for now
-        case Def.JsBooleanType                    => "Boolean"
+        case Def.JsStringType                 => "String"
+        case Def.JsNumberType                 => "Int" // #nc for now
+        case Def.JsBooleanType                => "Boolean"
+        case Def.JsCustomType("SnapFunction") =>
+          "js.Function1[js.Object, Double]" // sl-split-panel `snap` (2.15+)
         case Def.JsCustomType("MutationObserver") => "dom.MutationObserver"
         case Def.JsCustomType("Keyframe[]")       => "js.Array[js.Object]"
         // case Def.JsCustomType("Element") => "elementProp" // #nc need custom codec
@@ -754,12 +778,14 @@ class ShoelaceTranslator(
     jsType match {
       case Def.JsUndefinedType =>
         "Unit" // yes, js.UndefOr[A] is equivalent to A | Unit. (the | is scala.scalajs.js.|, not the Scala 3 | )
-      case Def.JsNumberType             => "Int" // #nc for now
-      case Def.JsBooleanType            => "Boolean"
-      case Def.JsStringType             => "String"
-      case Def.JsCustomType("string[]") => "js.Array[String]"
+      case Def.JsNumberType               => "Int" // #nc for now
+      case Def.JsBooleanType              => "Boolean"
+      case Def.JsStringType               => "String"
+      case Def.JsCustomType("string[]")   => "js.Array[String]"
       case Def.JsCustomType("Keyframe[]") =>
         "js.Array[js.Object]" // #nc not sure what the exact type should be
+      case Def.JsCustomType("SnapFunction") =>
+        "js.Function1[js.Object, Double]" // sl-split-panel `snap` (2.15+)
       case Def.JsCustomType("MutationObserver") => "dom.MutationObserver"
       case Def.JsCustomType("MutationRecord[]") =>
         "js.Array[dom.MutationRecord]"
@@ -807,10 +833,10 @@ class ShoelaceTranslator(
           }
           .getOrElse {
             str match {
-              case "string"    => List(Def.JsStringType)
-              case "boolean"   => List(Def.JsBooleanType)
-              case "undefined" => List(Def.JsUndefinedType)
-              case "number"    => List(Def.JsNumberType)
+              case "string"       => List(Def.JsStringType)
+              case "boolean"      => List(Def.JsBooleanType)
+              case "undefined"    => List(Def.JsUndefinedType)
+              case "number"       => List(Def.JsNumberType)
               case "CSSNumberish" =>
                 List(
                   Def.JsNumberType

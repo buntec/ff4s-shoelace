@@ -3,6 +3,7 @@ package ff4s.shoelace
 // format: off
 
 import ff4s.*
+import ff4s.shoelace.EventTypes.*
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -12,18 +13,21 @@ import scala.scalajs.js.|
 
 /**
   * Avatars are used to represent a person or object.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Avatar.scala Avatar.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Avatar.scala Avatar.scala source code]]
+  *
   * [[https://shoelace.style/components/avatar Shoelace Avatar docs]]
   */
 object Avatar extends WebComponent {
   override val tagName: String = "sl-avatar"
 
-  type Ref = AvatarComponent with dom.HTMLElement
+  type Ref = AvatarComponent & dom.HTMLElement
 
 
   // -- Events --
+
+  /** The image could not be loaded. This may because of an invalid URL, a temporary network condition, or some unknown cause. */
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --
@@ -77,9 +81,9 @@ object Avatar extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait AvatarComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait AvatarComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The image source to use for the avatar. */
     var image: String

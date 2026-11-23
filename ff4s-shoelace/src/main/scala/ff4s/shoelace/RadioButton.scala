@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Radios buttons allow the user to select a single option from a group using a button-like control.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/RadioButton.scala RadioButton.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/RadioButton.scala RadioButton.scala source code]]
+  *
   * [[https://shoelace.style/components/radio-button Shoelace RadioButton docs]]
   */
 object RadioButton extends WebComponent {
   override val tagName: String = "sl-radio-button"
 
-  type Ref = RadioButtonComponent with dom.HTMLElement
+  type Ref = RadioButtonComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -53,7 +53,7 @@ object RadioButton extends WebComponent {
   // -- Props --
 
   /** The radio's value. When selected, the radio group will receive this value. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -98,9 +98,9 @@ object RadioButton extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait RadioButtonComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait RadioButtonComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The radio's value. When selected, the radio group will receive this value. */
     var value: String

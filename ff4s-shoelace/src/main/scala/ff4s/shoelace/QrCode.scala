@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Generates a [QR code](https://www.qrcode.com/) and renders it using the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/QrCode.scala QrCode.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/QrCode.scala QrCode.scala source code]]
+  *
   * [[https://shoelace.style/components/qr-code Shoelace QrCode docs]]
   */
 object QrCode extends WebComponent {
   override val tagName: String = "sl-qr-code"
 
-  type Ref = QrCodeComponent with dom.HTMLElement
+  type Ref = QrCodeComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -53,7 +53,7 @@ object QrCode extends WebComponent {
   // -- Props --
 
   /** The QR code's value. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -74,9 +74,9 @@ object QrCode extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait QrCodeComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait QrCodeComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The QR code's value. */
     var value: String

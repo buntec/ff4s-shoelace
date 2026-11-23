@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Options define the selectable items within various form controls such as [select](/components/select).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Option.scala Option.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Option.scala Option.scala source code]]
+  *
   * [[https://shoelace.style/components/option Shoelace Option docs]]
   */
 object Option extends WebComponent {
   override val tagName: String = "sl-option"
 
-  type Ref = OptionComponent with dom.HTMLElement
+  type Ref = OptionComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -46,7 +46,7 @@ object Option extends WebComponent {
     * from other options in the same group. Values may not contain spaces, as spaces are used as delimiters when listing
     * multiple values.
     */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -88,9 +88,9 @@ object Option extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait OptionComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait OptionComponent extends js.Object { this: dom.HTMLElement =>
 
     val current: Boolean
 

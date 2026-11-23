@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Dropdowns expose additional content that "drops down" in a panel.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Dropdown.scala Dropdown.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Dropdown.scala Dropdown.scala source code]]
+  *
   * [[https://shoelace.style/components/dropdown Shoelace Dropdown docs]]
   */
 object Dropdown extends WebComponent {
   override val tagName: String = "sl-dropdown"
 
-  type Ref = DropdownComponent with dom.HTMLElement
+  type Ref = DropdownComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -73,6 +73,9 @@ object Dropdown extends WebComponent {
     */
   lazy val hoist: HtmlAttr[Boolean] = boolAttr("hoist")
 
+  /** Syncs the popup width or height to that of the trigger element. */
+  lazy val sync: HtmlAttr[String] = stringAttr("sync")
+
 
   // -- Props --
 
@@ -96,8 +99,11 @@ object Dropdown extends WebComponent {
   /** For documentation only. You need to style these from a CSS stylesheet. */
   object cssParts {
 
-    /** The component's base wrapper. */
+    /** The component's base wrapper, an `<sl-popup>` element. */
     lazy val base: String = "base"
+
+    /** The popup's exported `popup` part. Use this to target the tooltip's popup container. */
+    lazy val base__popup: String = "base__popup"
 
     /** The container that wraps the trigger. */
     lazy val trigger: String = "trigger"
@@ -107,9 +113,9 @@ object Dropdown extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait DropdownComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait DropdownComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * Indicates whether or not the dropdown is open. You can toggle this attribute to show and hide the dropdown, or you
@@ -143,5 +149,8 @@ object Dropdown extends WebComponent {
       * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
       */
     var hoist: Boolean
+
+    /** Syncs the popup width or height to that of the trigger element. */
+    var sync: String | Unit
   }
 }

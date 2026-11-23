@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Formats a number using the specified locale and options.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/FormatNumber.scala FormatNumber.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/FormatNumber.scala FormatNumber.scala source code]]
+  *
   * [[https://shoelace.style/components/format-number Shoelace FormatNumber docs]]
   */
 object FormatNumber extends WebComponent {
   override val tagName: String = "sl-format-number"
 
-  type Ref = FormatNumberComponent with dom.HTMLElement
+  type Ref = FormatNumberComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -66,7 +66,7 @@ object FormatNumber extends WebComponent {
   // -- Props --
 
   /** The number to format. */
-  lazy val value: HtmlProp[Int, _] = intProp("value")
+  lazy val value: HtmlProp[Int, ?] = intProp("value")
 
 
   // -- Slots --
@@ -83,9 +83,9 @@ object FormatNumber extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait FormatNumberComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait FormatNumberComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The number to format. */
     var value: Int

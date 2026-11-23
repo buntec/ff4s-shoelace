@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Skeletons are used to provide a visual representation of where content will eventually be drawn.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Skeleton.scala Skeleton.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Skeleton.scala Skeleton.scala source code]]
+  *
   * [[https://shoelace.style/components/skeleton Shoelace Skeleton docs]]
   */
 object Skeleton extends WebComponent {
   override val tagName: String = "sl-skeleton"
 
-  type Ref = SkeletonComponent with dom.HTMLElement
+  type Ref = SkeletonComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -56,9 +56,9 @@ object Skeleton extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait SkeletonComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait SkeletonComponent extends js.Object { this: dom.HTMLElement =>
 
     /** Determines which effect the skeleton will use. */
     var effect: String

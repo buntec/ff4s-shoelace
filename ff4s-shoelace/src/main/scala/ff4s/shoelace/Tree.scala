@@ -13,21 +13,21 @@ import scala.scalajs.js.|
 
 /**
   * Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tree.scala Tree.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tree.scala Tree.scala source code]]
+  *
   * [[https://shoelace.style/components/tree Shoelace Tree docs]]
   */
 object Tree extends WebComponent {
   override val tagName: String = "sl-tree"
 
-  type Ref = TreeComponent with dom.HTMLElement
+  type Ref = TreeComponent & dom.HTMLElement
 
 
   // -- Events --
 
   /** Emitted when a tree item is selected or deselected. */
-  lazy val onSelectionChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectionChangeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SelectionChangeEvent]]("sl-selection-change")
+  lazy val onSelectionChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[SelectionChangeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[SelectionChangeEvent]]("sl-selection-change")
 
 
   // -- Attributes --
@@ -69,9 +69,9 @@ object Tree extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait TreeComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait TreeComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * The selection behavior of the tree. Single selection allows only one node to be selected at a time. Multiple

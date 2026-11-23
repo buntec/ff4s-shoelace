@@ -13,15 +13,15 @@ import scala.scalajs.js.|
 
 /**
   * Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Dialog.scala Dialog.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Dialog.scala Dialog.scala source code]]
+  *
   * [[https://shoelace.style/components/dialog Shoelace Dialog docs]]
   */
 object Dialog extends WebComponent {
   override val tagName: String = "sl-dialog"
 
-  type Ref = DialogComponent with dom.HTMLElement
+  type Ref = DialogComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -42,7 +42,7 @@ object Dialog extends WebComponent {
   lazy val onInitialFocus: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-initial-focus")
 
   /** Emitted when the user attempts to close the dialog by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the dialog open. Avoid using this unless closing the dialog will result in destructive behavior such as data loss. */
-  lazy val onRequestClose: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[RequestCloseEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[RequestCloseEvent]]("sl-request-close")
+  lazy val onRequestClose: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[RequestCloseEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[RequestCloseEvent]]("sl-request-close")
 
 
   // -- Attributes --
@@ -126,9 +126,9 @@ object Dialog extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait DialogComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait DialogComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * Indicates whether or not the dialog is open. You can toggle this attribute to show and hide the dialog, or you can

@@ -13,24 +13,24 @@ import scala.scalajs.js.|
 
 /**
   * Tab groups organize content into a container that shows one section at a time.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/TabGroup.scala TabGroup.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/TabGroup.scala TabGroup.scala source code]]
+  *
   * [[https://shoelace.style/components/tab-group Shoelace TabGroup docs]]
   */
 object TabGroup extends WebComponent {
   override val tagName: String = "sl-tab-group"
 
-  type Ref = TabGroupComponent with dom.HTMLElement
+  type Ref = TabGroupComponent & dom.HTMLElement
 
 
   // -- Events --
 
   /** Emitted when a tab is shown. */
-  lazy val onTabShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabShowEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabShowEvent]]("sl-tab-show")
+  lazy val onTabShow: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[TabShowEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[TabShowEvent]]("sl-tab-show")
 
   /** Emitted when a tab is hidden. */
-  lazy val onTabHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabHideEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[TabHideEvent]]("sl-tab-hide")
+  lazy val onTabHide: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[TabHideEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[TabHideEvent]]("sl-tab-hide")
 
 
   // -- Attributes --
@@ -46,6 +46,9 @@ object TabGroup extends WebComponent {
 
   /** Disables the scroll arrows that appear when tabs overflow. */
   lazy val noScrollControls: HtmlAttr[Boolean] = boolAttr("no-scroll-controls")
+
+  /** Prevent scroll buttons from being hidden when inactive. */
+  lazy val fixedScrollControls: HtmlAttr[Boolean] = boolAttr("fixed-scroll-controls")
 
 
   // -- Props --
@@ -99,9 +102,9 @@ object TabGroup extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait TabGroupComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait TabGroupComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The placement of the tabs. */
     var placement: String
@@ -114,5 +117,8 @@ object TabGroup extends WebComponent {
 
     /** Disables the scroll arrows that appear when tabs overflow. */
     var noScrollControls: Boolean
+
+    /** Prevent scroll buttons from being hidden when inactive. */
+    var fixedScrollControls: Boolean
   }
 }

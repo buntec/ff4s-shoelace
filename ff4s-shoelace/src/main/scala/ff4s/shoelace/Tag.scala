@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Tags are used as labels to organize things or to indicate a selection.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tag.scala Tag.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tag.scala Tag.scala source code]]
+  *
   * [[https://shoelace.style/components/tag Shoelace Tag docs]]
   */
 object Tag extends WebComponent {
   override val tagName: String = "sl-tag"
 
-  type Ref = TagComponent with dom.HTMLElement
+  type Ref = TagComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -77,9 +77,9 @@ object Tag extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait TagComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait TagComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The tag's theme variant. */
     var variant: String

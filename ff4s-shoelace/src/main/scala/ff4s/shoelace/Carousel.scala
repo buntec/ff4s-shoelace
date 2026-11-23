@@ -13,19 +13,19 @@ import scala.scalajs.js.|
 
 /**
   * Carousels display an arbitrary number of content slides along a horizontal or vertical axis.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Carousel.scala Carousel.scala source code]]
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Carousel.scala Carousel.scala source code]]
   */
 object Carousel extends WebComponent {
   override val tagName: String = "sl-carousel"
 
-  type Ref = CarouselComponent with dom.HTMLElement
+  type Ref = CarouselComponent & dom.HTMLElement
 
 
   // -- Events --
 
   /** Emitted when the active slide changes. */
-  lazy val onSlideChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SlideChangeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[SlideChangeEvent]]("sl-slide-change")
+  lazy val onSlideChange: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[SlideChangeEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[SlideChangeEvent]]("sl-slide-change")
 
 
   // -- Attributes --
@@ -63,9 +63,9 @@ object Carousel extends WebComponent {
 
   // -- Props --
 
-  lazy val scrolling: HtmlProp[Boolean, _] = boolProp("scrolling")
+  lazy val scrolling: HtmlProp[Boolean, ?] = boolProp("scrolling")
 
-  lazy val dragging: HtmlProp[Boolean, _] = boolProp("dragging")
+  lazy val dragging: HtmlProp[Boolean, ?] = boolProp("dragging")
 
 
   // -- Slots --
@@ -119,9 +119,9 @@ object Carousel extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait CarouselComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait CarouselComponent extends js.Object { this: dom.HTMLElement =>
 
     /** When set, allows the user to navigate the carousel in the same direction indefinitely. */
     var loop: Boolean

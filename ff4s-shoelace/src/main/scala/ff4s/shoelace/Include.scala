@@ -13,15 +13,15 @@ import scala.scalajs.js.|
 
 /**
   * Includes give you the power to embed external HTML files into the page.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Include.scala Include.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Include.scala Include.scala source code]]
+  *
   * [[https://shoelace.style/components/include Shoelace Include docs]]
   */
 object Include extends WebComponent {
   override val tagName: String = "sl-include"
 
-  type Ref = IncludeComponent with dom.HTMLElement
+  type Ref = IncludeComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -30,7 +30,7 @@ object Include extends WebComponent {
   lazy val onLoad: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-load")
 
   /** Emitted when the included file fails to load due to an error. */
-  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[ErrorEvent]]("sl-error")
+  lazy val onError: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[ErrorEvent]]("sl-error")
 
 
   // -- Attributes --
@@ -68,9 +68,9 @@ object Include extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait IncludeComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait IncludeComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * The location of the HTML file to include. Be sure you trust the content you are including as it will be executed as

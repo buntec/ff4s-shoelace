@@ -13,15 +13,15 @@ import scala.scalajs.js.|
 
 /**
   * Drawers slide in from a container to expose additional options and information.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Drawer.scala Drawer.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Drawer.scala Drawer.scala source code]]
+  *
   * [[https://shoelace.style/components/drawer Shoelace Drawer docs]]
   */
 object Drawer extends WebComponent {
   override val tagName: String = "sl-drawer"
 
-  type Ref = DrawerComponent with dom.HTMLElement
+  type Ref = DrawerComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -42,7 +42,7 @@ object Drawer extends WebComponent {
   lazy val onInitialFocus: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref]]("sl-initial-focus")
 
   /** Emitted when the user attempts to close the drawer by clicking the close button, clicking the overlay, or pressing escape. Calling `event.preventDefault()` will keep the drawer open. Avoid using this unless closing the drawer will result in destructive behavior such as data loss. */
-  lazy val onRequestClose: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[RequestCloseEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] with HasDetail[RequestCloseEvent]]("sl-request-close")
+  lazy val onRequestClose: EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[RequestCloseEvent]] = EventProp[ff4s.shoelace.EventWithPreciseTarget[Ref] & HasDetail[RequestCloseEvent]]("sl-request-close")
 
 
   // -- Attributes --
@@ -135,9 +135,9 @@ object Drawer extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait DrawerComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait DrawerComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * Indicates whether or not the drawer is open. You can toggle this attribute to show and hide the drawer, or you can

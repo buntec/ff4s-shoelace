@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Tabs are used inside [tab groups](/components/tab-group) to represent and activate [tab panels](/components/tab-panel).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tab.scala Tab.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tab.scala Tab.scala source code]]
+  *
   * [[https://shoelace.style/components/tab Shoelace Tab docs]]
   */
 object Tab extends WebComponent {
   override val tagName: String = "sl-tab"
 
-  type Ref = TabComponent with dom.HTMLElement
+  type Ref = TabComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -74,9 +74,9 @@ object Tab extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait TabComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait TabComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
     var panel: String

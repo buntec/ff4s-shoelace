@@ -1,9 +1,9 @@
 {
-  "name": "laminar-shoelace-components",
+  "name": "ff4s-shoelace",
   "private": true,
-  "version": "0.1.0",
   "type": "module",
   "devDependencies": {
-    "@shoelace-style/shoelace": "~2.14.0"
+    "@shoelace-style/shoelace": "2.20.1",
+    "jsdom": "31.0.1"
   }
 }

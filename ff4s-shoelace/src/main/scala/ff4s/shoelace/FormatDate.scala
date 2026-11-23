@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Formats a date/time using the specified locale and options.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/FormatDate.scala FormatDate.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/FormatDate.scala FormatDate.scala source code]]
+  *
   * [[https://shoelace.style/components/format-date Shoelace FormatDate docs]]
   */
 object FormatDate extends WebComponent {
   override val tagName: String = "sl-format-date"
 
-  type Ref = FormatDateComponent with dom.HTMLElement
+  type Ref = FormatDateComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -79,9 +79,9 @@ object FormatDate extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait FormatDateComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait FormatDateComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The format for displaying the weekday. */
     var weekday: String

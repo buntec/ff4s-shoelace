@@ -12,8 +12,8 @@ import scala.scalajs.js.|
 
 /**
   * A carousel item represent a slide within a [carousel](/components/carousel).
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/CarouselItem.scala CarouselItem.scala source code]]
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/CarouselItem.scala CarouselItem.scala source code]]
   */
 object CarouselItem extends WebComponent {
   override val tagName: String = "sl-carousel-item"

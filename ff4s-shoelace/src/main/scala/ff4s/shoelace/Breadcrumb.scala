@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Breadcrumb.scala Breadcrumb.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Breadcrumb.scala Breadcrumb.scala source code]]
+  *
   * [[https://shoelace.style/components/breadcrumb Shoelace Breadcrumb docs]]
   */
 object Breadcrumb extends WebComponent {
   override val tagName: String = "sl-breadcrumb"
 
-  type Ref = BreadcrumbComponent with dom.HTMLElement
+  type Ref = BreadcrumbComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -62,9 +62,9 @@ object Breadcrumb extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait BreadcrumbComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait BreadcrumbComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * The label to use for the breadcrumb control. This will not be shown on the screen, but it will be announced by

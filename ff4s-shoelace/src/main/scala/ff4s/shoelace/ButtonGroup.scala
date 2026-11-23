@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Button groups can be used to group related buttons into sections.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/ButtonGroup.scala ButtonGroup.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/ButtonGroup.scala ButtonGroup.scala source code]]
+  *
   * [[https://shoelace.style/components/button-group Shoelace ButtonGroup docs]]
   */
 object ButtonGroup extends WebComponent {
   override val tagName: String = "sl-button-group"
 
-  type Ref = ButtonGroupComponent with dom.HTMLElement
+  type Ref = ButtonGroupComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -59,9 +59,9 @@ object ButtonGroup extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait ButtonGroupComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait ButtonGroupComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive

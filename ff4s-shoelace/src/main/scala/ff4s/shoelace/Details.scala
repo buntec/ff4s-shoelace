@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Details show a brief summary and expand to show additional content.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Details.scala Details.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Details.scala Details.scala source code]]
+  *
   * [[https://shoelace.style/components/details Shoelace Details docs]]
   */
 object Details extends WebComponent {
   override val tagName: String = "sl-details"
 
-  type Ref = DetailsComponent with dom.HTMLElement
+  type Ref = DetailsComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -55,7 +55,7 @@ object Details extends WebComponent {
 
   // -- Props --
 
-  lazy val detailsObserver: HtmlProp[dom.MutationObserver, _] = asIsProp("detailsObserver")
+  lazy val detailsObserver: HtmlProp[dom.MutationObserver, ?] = asIsProp("detailsObserver")
 
 
   // -- Slots --
@@ -100,9 +100,9 @@ object Details extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait DetailsComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait DetailsComponent extends js.Object { this: dom.HTMLElement =>
 
     var detailsObserver: dom.MutationObserver
 

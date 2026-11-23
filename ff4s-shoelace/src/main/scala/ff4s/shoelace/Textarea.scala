@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Textareas collect data from the user and allow multiple lines of text.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Textarea.scala Textarea.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Textarea.scala Textarea.scala source code]]
+  *
   * [[https://shoelace.style/components/textarea Shoelace Textarea docs]]
   */
 object Textarea extends WebComponent {
   override val tagName: String = "sl-textarea"
 
-  type Ref = TextareaComponent with dom.HTMLTextAreaElement
+  type Ref = TextareaComponent & dom.HTMLTextAreaElement
 
 
   // -- Events --
@@ -125,7 +125,7 @@ object Textarea extends WebComponent {
   // -- Props --
 
   /** The current value of the textarea, submitted as a name/value pair with form data. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -167,9 +167,9 @@ object Textarea extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait TextareaComponent extends js.Object { this: dom.HTMLTextAreaElement => 
+  @js.native trait TextareaComponent extends js.Object { this: dom.HTMLTextAreaElement =>
 
     var title: String
 

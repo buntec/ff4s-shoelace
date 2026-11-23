@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Selects allow you to choose items from a menu of predefined options.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Select.scala Select.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Select.scala Select.scala source code]]
+  *
   * [[https://shoelace.style/components/select Shoelace Select docs]]
   */
 object Select extends WebComponent {
   override val tagName: String = "sl-select"
 
-  type Ref = SelectComponent with dom.HTMLElement
+  type Ref = SelectComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -130,7 +130,7 @@ object Select extends WebComponent {
     * value attribute will be a space-delimited list of values based on the options selected, and the value property will
     * be an array. **For this reason, values must not contain spaces.**
     */
-  lazy val value: HtmlProp[String | js.Array[String], _] = asIsProp("value")
+  lazy val value: HtmlProp[String | js.Array[String], ?] = asIsProp("value")
 
 
   // -- Slots --
@@ -145,6 +145,9 @@ object Select extends WebComponent {
 
     /** Used to prepend a presentational icon or similar element to the combobox. */
     lazy val prefix: Slot = Slot("prefix")
+
+    /** Used to append a presentational icon or similar element to the combobox. */
+    lazy val suffix: Slot = Slot("suffix")
 
     /** An icon to use in lieu of the default clear icon. */
     lazy val clearIcon: Slot = Slot("clear-icon")
@@ -176,11 +179,14 @@ object Select extends WebComponent {
     /** The help text's wrapper. */
     lazy val formControlHelpText: String = "form-control-help-text"
 
-    /** The container the wraps the prefix, combobox, clear icon, and expand button. */
+    /** The container the wraps the prefix, suffix, combobox, clear icon, and expand button. */
     lazy val combobox: String = "combobox"
 
     /** The container that wraps the prefix slot. */
     lazy val prefix: String = "prefix"
+
+    /** The container that wraps the suffix slot. */
+    lazy val suffix: String = "suffix"
 
     /** The element that displays the selected option's label, an `<input>` element. */
     lazy val displayInput: String = "display-input"
@@ -214,9 +220,9 @@ object Select extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait SelectComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait SelectComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The name of the select, submitted as a name/value pair with form data. */
     var name: String

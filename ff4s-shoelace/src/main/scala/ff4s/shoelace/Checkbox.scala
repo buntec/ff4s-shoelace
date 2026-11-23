@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Checkboxes allow the user to toggle an option on or off.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Checkbox.scala Checkbox.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Checkbox.scala Checkbox.scala source code]]
+  *
   * [[https://shoelace.style/components/checkbox Shoelace Checkbox docs]]
   */
 object Checkbox extends WebComponent {
   override val tagName: String = "sl-checkbox"
 
-  type Ref = CheckboxComponent with dom.HTMLElement
+  type Ref = CheckboxComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -83,10 +83,10 @@ object Checkbox extends WebComponent {
   // -- Props --
 
   /** The current value of the checkbox, submitted as a name/value pair with form data. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
   /** Draws the checkbox in a checked state. */
-  lazy val checked: HtmlProp[Boolean, _] = boolProp("checked")
+  lazy val checked: HtmlProp[Boolean, ?] = boolProp("checked")
 
 
   // -- Slots --
@@ -134,9 +134,9 @@ object Checkbox extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait CheckboxComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait CheckboxComponent extends js.Object { this: dom.HTMLElement =>
 
     var title: String
 

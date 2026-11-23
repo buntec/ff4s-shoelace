@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Dividers are used to visually separate or group elements.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Divider.scala Divider.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Divider.scala Divider.scala source code]]
+  *
   * [[https://shoelace.style/components/divider Shoelace Divider docs]]
   */
 object Divider extends WebComponent {
   override val tagName: String = "sl-divider"
 
-  type Ref = DividerComponent with dom.HTMLElement
+  type Ref = DividerComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -49,9 +49,9 @@ object Divider extends WebComponent {
   @inline def noCssParts(): Unit = ()
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait DividerComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait DividerComponent extends js.Object { this: dom.HTMLElement =>
 
     /** Draws the divider in a vertical orientation. */
     var vertical: Boolean

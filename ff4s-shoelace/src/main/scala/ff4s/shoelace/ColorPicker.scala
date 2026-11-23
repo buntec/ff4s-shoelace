@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Color pickers allow the user to select a color.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/ColorPicker.scala ColorPicker.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/ColorPicker.scala ColorPicker.scala source code]]
+  *
   * [[https://shoelace.style/components/color-picker Shoelace ColorPicker docs]]
   */
 object ColorPicker extends WebComponent {
   override val tagName: String = "sl-color-picker"
 
-  type Ref = ColorPickerComponent with dom.HTMLElement
+  type Ref = ColorPickerComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -107,7 +107,7 @@ object ColorPicker extends WebComponent {
     * in a specific format, use the `getFormattedValue()` method. The value is submitted as a name/value pair with form
     * data.
     */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -206,9 +206,9 @@ object ColorPicker extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait ColorPickerComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait ColorPickerComponent extends js.Object { this: dom.HTMLElement =>
 
     /**
       * The current value of the color picker. The value's format will vary based the `format` attribute. To get the value

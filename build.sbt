@@ -1,10 +1,10 @@
 Global / onChangedBuildSource := ReloadOnSourceChanges
-Global / resolvers += "Sonatype S01 OSS Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots"
+Global / resolvers += "Sonatype Central Snapshots" at "https://central.sonatype.com/repository/maven-snapshots/"
 
 ThisBuild / tlBaseVersion := "0.0"
 
-lazy val scala213 = "2.13.17"
-lazy val scala3 = "3.7.3"
+lazy val scala213 = "2.13.18"
+lazy val scala3 = "3.10.1"
 ThisBuild / scalaVersion := scala3
 ThisBuild / crossScalaVersions := Seq(scala213, scala3)
 
@@ -18,18 +18,15 @@ ThisBuild / tlCiDependencyGraphJob := false
 ThisBuild / developers := List(tlGitHubDev("buntec", "Christoph Bunte"))
 
 ThisBuild / tlFatalWarnings := false
-ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("11"))
+ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
 
 lazy val generateShoelace = taskKey[Unit]("generates the component definitions")
 
-lazy val ff4sVersion = "0.26.1"
+lazy val ff4sVersion = "0.27.0"
 lazy val scalajsDomVersion = "2.8.1"
-lazy val circeVersion = "0.14.15"
 lazy val catsVersion = "2.13.0"
-lazy val catsEffectVersion = "3.6.3"
-lazy val fs2Version = "3.12.2"
-lazy val kindProjectorVersion = "0.13.4"
-lazy val betterMonadicForVersion = "0.3.1"
+lazy val catsEffectVersion = "3.7.1"
+lazy val fs2Version = "3.16.0"
 lazy val fs2DomVersion = "0.2.1"
 lazy val monocleVersion = "3.3.0"
 
@@ -41,8 +38,7 @@ lazy val `ff4s-shoelace` = (project in file("ff4s-shoelace"))
   .settings(
     generateShoelace := {
       new ShoelaceGenerator(
-        onlineSourceRoot =
-          "https://github.com/buntec/ff4s-shoelace/blob/master",
+        onlineSourceRoot = "https://github.com/buntec/ff4s-shoelace/blob/main",
         customElementsJsonPath =
           "node_modules/@shoelace-style/shoelace/dist/custom-elements.json",
         baseOutputDirectoryPath = "ff4s-shoelace/src/main/scala/ff4s/shoelace",

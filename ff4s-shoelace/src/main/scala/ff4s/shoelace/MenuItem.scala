@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Menu items provide options for the user to pick from in a menu.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/MenuItem.scala MenuItem.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/MenuItem.scala MenuItem.scala source code]]
+  *
   * [[https://shoelace.style/components/menu-item Shoelace MenuItem docs]]
   */
 object MenuItem extends WebComponent {
   override val tagName: String = "sl-menu-item"
 
-  type Ref = MenuItemComponent with dom.HTMLElement
+  type Ref = MenuItemComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -51,10 +51,10 @@ object MenuItem extends WebComponent {
   // -- Props --
 
   /** Draws the item in a checked state. */
-  lazy val checked: HtmlProp[Boolean, _] = boolProp("checked")
+  lazy val checked: HtmlProp[Boolean, ?] = boolProp("checked")
 
   /** A unique value to store in the menu item. This can be used as a way to identify menu items when selected. */
-  lazy val value: HtmlProp[String, _] = stringProp("value")
+  lazy val value: HtmlProp[String, ?] = stringProp("value")
 
 
   // -- Slots --
@@ -108,9 +108,9 @@ object MenuItem extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait MenuItemComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait MenuItemComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The type of menu item to render. To use `checked`, this value must be set to `checkbox`. */
     var `type`: String

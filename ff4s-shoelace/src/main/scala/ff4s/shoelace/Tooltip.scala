@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Tooltips display additional information based on a specific action.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tooltip.scala Tooltip.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/Tooltip.scala Tooltip.scala source code]]
+  *
   * [[https://shoelace.style/components/tooltip Shoelace Tooltip docs]]
   */
 object Tooltip extends WebComponent {
   override val tagName: String = "sl-tooltip"
 
-  type Ref = TooltipComponent with dom.HTMLElement
+  type Ref = TooltipComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -112,9 +112,9 @@ object Tooltip extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait TooltipComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait TooltipComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The tooltip's content. If you need to display HTML, use the `content` slot instead. */
     var content: String

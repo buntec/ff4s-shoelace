@@ -12,15 +12,15 @@ import scala.scalajs.js.|
 
 /**
   * Progress bars are used to show the status of an ongoing operation.
-  * 
-  * [[https://github.com/buntec/ff4s-shoelace/blob/master/ff4s-shoelace/src/main/scala/ff4s/shoelace/ProgressBar.scala ProgressBar.scala source code]]
-  * 
+  *
+  * [[https://github.com/buntec/ff4s-shoelace/blob/main/ff4s-shoelace/src/main/scala/ff4s/shoelace/ProgressBar.scala ProgressBar.scala source code]]
+  *
   * [[https://shoelace.style/components/progress-bar Shoelace ProgressBar docs]]
   */
 object ProgressBar extends WebComponent {
   override val tagName: String = "sl-progress-bar"
 
-  type Ref = ProgressBarComponent with dom.HTMLElement
+  type Ref = ProgressBarComponent & dom.HTMLElement
 
 
   // -- Events --
@@ -41,7 +41,7 @@ object ProgressBar extends WebComponent {
   // -- Props --
 
   /** The current progress as a percentage, 0 to 100. */
-  lazy val value: HtmlProp[Int, _] = intProp("value")
+  lazy val value: HtmlProp[Int, ?] = intProp("value")
 
 
   // -- Slots --
@@ -71,9 +71,9 @@ object ProgressBar extends WebComponent {
   }
 
 
-  // -- Element type -- 
+  // -- Element type --
 
-  @js.native trait ProgressBarComponent extends js.Object { this: dom.HTMLElement => 
+  @js.native trait ProgressBarComponent extends js.Object { this: dom.HTMLElement =>
 
     /** The current progress as a percentage, 0 to 100. */
     var value: Int
