@@ -6,7 +6,7 @@ This is a minor adaptation of [laminar-shoelace-components](https://github.com/r
 All credit is due to the amazing @raquo.
 
 ```scala
-libraryDependencies += "io.github.buntec" %%% "ff4s-shoelace" % "0.0.1"
+libraryDependencies += "io.github.buntec" %%% "ff4s-shoelace" % "0.1.0"
 ```
 
 The bindings are generated from Shoelace 2.20.1. They don't include Shoelace itself,
