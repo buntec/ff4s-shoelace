@@ -4,6 +4,7 @@
   "type": "module",
   "devDependencies": {
     "@shoelace-style/shoelace": "2.20.1",
-    "jsdom": "31.0.1"
+    "jsdom": "31.0.1",
+    "vite": "8.3.8"
   }
 }
