@@ -1,6 +1,7 @@
-# Serve the examples at http://127.0.0.1:8080/ (run `just link-examples` first)
+# Serve the examples at http://127.0.0.1:8080/, reloading when the bundle is relinked
+# (run `just install` and `just link-examples` or `just watch-examples` first)
 serve-examples:
-    python3 -m http.server 8080 --bind 127.0.0.1 --directory examples
+    npm exec vite -- examples --host 127.0.0.1 --port 8080 --strictPort
 
 # Link the examples to examples/target/js (e.g. `just link-examples 2.13`)
 link-examples scala="3":
@@ -10,7 +11,7 @@ link-examples scala="3":
 watch-examples scala="3":
     sbt '++ {{scala}}' '~examples/fastLinkJS'
 
-# Install the JavaScript dependencies (Shoelace for the generator, jsdom for the tests)
+# Install the JavaScript dependencies (Shoelace for the generator, jsdom for the tests, Vite for the examples)
 install:
     npm ci
 

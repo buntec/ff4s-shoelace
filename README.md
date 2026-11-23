@@ -19,13 +19,13 @@ so load its JavaScript and a theme in your page, e.g. from a CDN:
 
 ## Development
 
-The recipes in the [justfile](justfile) need [just](https://github.com/casey/just), sbt, Node.js and Python 3.
+The recipes in the [justfile](justfile) need [just](https://github.com/casey/just), sbt and Node.js.
 
-- `just install`: install the npm dependencies (Shoelace for the generator, jsdom for the tests)
+- `just install`: install the npm dependencies (Shoelace for the generator, jsdom for the tests, Vite for the examples)
 - `just generate`: regenerate the bindings in `ff4s-shoelace/src/main/scala` from `node_modules/@shoelace-style/shoelace`.
   CI checks that the committed sources are up to date.
 - `just test [scala]`: run the test suite in jsdom, e.g. `just test 2.13`
-- `just link-examples [scala]` (or `just watch-examples [scala]`), then `just serve-examples`: serve the examples at http://127.0.0.1:8080/
+- `just link-examples [scala]` (or `just watch-examples [scala]`), then `just serve-examples`: serve the examples at http://127.0.0.1:8080/ (the page reloads whenever the bundle is relinked)
 
 To move to a newer Shoelace, update `@shoelace-style/shoelace` in `package.json`,
 run `npm install` and `just generate`, and bump the CDN links in `examples/index.html`.
